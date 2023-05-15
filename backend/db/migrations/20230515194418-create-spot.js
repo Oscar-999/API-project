@@ -1,5 +1,10 @@
 'use strict';
 /** @type {import('sequelize-cli').Migration} */
+
+let options = {};
+if (process.env.NODE_ENV === 'production') {
+  options.schema = process.env.SCHEMA;  // define your schema in options object
+}
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Spots', {
@@ -67,7 +72,7 @@ module.exports = {
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
 
       }
-    });
+    },options);
 
     await queryInterface.addConstraint('Spots', {
       fields: ['ownerId'],
@@ -82,6 +87,7 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
+    options.tableName = 'Spots';
     await queryInterface.removeConstraint('Spots', 'fk_spots_ownerId');
     await queryInterface.dropTable('Spots');
   }
