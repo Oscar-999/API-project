@@ -37,15 +37,15 @@ module.exports = {
       },
       lat: {
         allowNull: false,
-        type: Sequelize.DECIMAL(9, 6) 
+        type: Sequelize.DECIMAL(9, 6)
       },
       lng: {
         allowNull: false,
-        type: Sequelize.DECIMAL(9, 6) 
+        type: Sequelize.DECIMAL(9, 6)
       },
       name: {
         allowNull: false,
-        type: Sequelize.STRING(50) 
+        type: Sequelize.STRING(50)
       },
       description: {
         allowNull: false,
@@ -53,7 +53,7 @@ module.exports = {
       },
       price: {
         allowNull: false,
-        type: Sequelize.DECIMAL(10, 2) 
+        type: Sequelize.DECIMAL(10, 2)
       },
       createdAt: {
         allowNull: false,
@@ -64,8 +64,21 @@ module.exports = {
         type: Sequelize.DATE
       }
     });
+
+    await queryInterface.addConstraint('Spots', {
+      fields: ['ownerId'],
+      type: 'foreign key',
+      name: 'fk_spots_ownerId',
+      references: {
+        table: 'Users',
+        field: 'id',
+      },
+      onDelete: 'CASCADE',
+      onUpdate: 'CASCADE',
+    });
   },
   async down(queryInterface, Sequelize) {
+    await queryInterface.removeConstraint('Spots', 'fk_spots_ownerId');
     await queryInterface.dropTable('Spots');
   }
 };

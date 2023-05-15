@@ -1,18 +1,14 @@
-"use strict";
-const { Model } = require("sequelize");
+'use strict';
+const { Model } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Spot extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
-      Spot.belongsTo(models.User, { foreignKey: 'ownerId', as: 'owner' });
-      Spot.hasMany(models.SpotImage, { foreignKey: 'spotId', as: 'spotImages' });
-      
+      Spot.belongsTo(models.User, { foreignKey: 'ownerId', as: 'owner', onDelete: 'CASCADE' });
+      Spot.hasMany(models.SpotImage, { foreignKey: 'spotId', as: 'spotImages', onDelete: 'CASCADE' });
     }
   }
+
   Spot.init(
     {
       ownerId: {
@@ -61,8 +57,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "Spot",
+      modelName: 'Spot',
     }
   );
+
   return Spot;
 };
