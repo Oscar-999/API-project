@@ -90,7 +90,7 @@ module.exports = {
 
   async down (queryInterface, Sequelize) {
     options.tableName = 'Spots'
-    await queryInterface.removeConstraint('Spots', 'fk_spots_ownerId');
     await queryInterface.dropTable(options)
+    await queryInterface.removeConstraint('Spots', 'fk_spots_ownerId');
   }
 };
