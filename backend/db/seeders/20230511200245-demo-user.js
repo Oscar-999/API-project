@@ -1,6 +1,4 @@
-
 'use strict';
-
 
 const bcrypt = require("bcryptjs");
 
@@ -11,38 +9,39 @@ if (process.env.NODE_ENV === 'production') {
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  up: async (queryInterface, Sequelize) => {
+  async up (queryInterface, Sequelize) {
     options.tableName = 'Users';
     await queryInterface.bulkInsert(options, [
       {
-        firstName: 'Jose',
-        lastName: 'Doe',
-        email: 'jose@user.io',
-        username: 'Jose-lition',
-        hashedPassword: bcrypt.hashSync('password')
+        firstName: 'Dylan',
+        lastName: 'Kingston',
+        email: 'kingdylan@gmail.com',
+        username: 'dylankinging',
+        hashedPassword: bcrypt.hashSync('password1')
       },
       {
         firstName: 'Peter',
         lastName: 'Cuh',
-        email: 'peter@user.io',
-        username: 'Peter1',
+        email: 'petoe@gmail.com',
+        username: 'PetierCuh',
         hashedPassword: bcrypt.hashSync('password2')
       },
       {
-        firstName: 'Danny',
-        lastName: 'Frankson',
-        email: 'dan@user.io',
-        username: 'Dan2',
+        firstName: 'Jose',
+        lastName: 'Jermenaz',
+        email: 'josej@gmail.com',
+        username: 'joseman',
         hashedPassword: bcrypt.hashSync('password3')
       }
     ], {});
   },
 
-  down: async (queryInterface, Sequelize) => {
+  async down (queryInterface, Sequelize) {
+  
     options.tableName = 'Users';
     const Op = Sequelize.Op;
     await queryInterface.bulkDelete(options, {
-      username: { [Op.in]: ['Jose-lition', 'Peter1', 'Dan2'] }
+      username: { [Op.in]: ['dylankinging', 'PetierCuh', 'joseman'] }
     }, {});
   }
 };

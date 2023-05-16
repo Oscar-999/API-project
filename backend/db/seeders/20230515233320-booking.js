@@ -1,11 +1,12 @@
 'use strict';
 
+/** @type {import('sequelize-cli').Migration} */
+
 let options = {};
 if (process.env.NODE_ENV === 'production') {
   options.schema = process.env.SCHEMA;  // define your schema in options object
 }
 
-/** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
     /**
@@ -17,19 +18,25 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-   options.tableName = 'ReviewImages';
+   options.tableName = 'Bookings';
    await queryInterface.bulkInsert(options, [
     {
-      reviewId: 1,
-      url: 'https://www.tastingtable.com/img/gallery/16-places-to-eat-and-drink-in-athens-greece/l-intro-1673379087.jpg'
+      spotId: 1,
+      userId: 1,
+      startDate: '2023-05-05',
+      endDate: '2023-05-19'
     },
     {
-      reviewId: 2,
-      url: 'https://handluggageonly.co.uk/wp-content/uploads/2015/05/Hand-Luggage-Only-7.jpg'
+      spotId: 2,
+      userId: 2,
+      startDate: '2023-09-04',
+      endDate: '2023-09-22'
     },
     {
-      reviewId: 3,
-      url: 'https://cdn.tourradar.com/s3/tour/645x430/156843_62ac430d534a0.jpg'
+      spotId: 3,
+      userId: 3,
+      startDate: '2023-08-05',
+      endDate: '2023-08-17'
     }
    ], {})
   },
@@ -41,10 +48,10 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    options.tableName = 'ReviewImages';
+    options.tableName = 'Bookings';
     const Op = Sequelize.Op;
     await queryInterface.bulkDelete(options, {
-      reviewId: { [Op.in]: [1, 2, 3] }
+      spotId: { [Op.in]: [1, 2, 3] }
     }, {})
   }
 };

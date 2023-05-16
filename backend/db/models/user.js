@@ -2,15 +2,36 @@
 
 const { Validator } = require('sequelize');
 
-const { Model } = require('sequelize');
+const {
+  Model
+} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
     static associate(models) {
-      User.hasMany(models.Spot, { foreignKey: 'ownerId', as: 'spots', onDelete: 'CASCADE' });
-      User.hasMany(models.Booking, { foreignKey: 'userId', as: 'bookings', onDelete: 'CASCADE' });
-      User.hasMany(models.Review, { foreignKey: 'userId', as: 'reviews', onDelete: 'CASCADE' });
+      // define association here
+      User.hasMany(models.Spot, {
+        foreignKey: 'ownerId',
+        onDelete: 'CASCADE',
+        hooks: true
+      }),
+      User.hasMany(models.Booking, {
+        foreignKey: 'userId',
+        onDelete: 'CASCADE',
+        hooks: true
+      }),
+      User.hasMany(models.Review, {
+        foreignKey: 'userId',
+        onDelete: 'CASCADE',
+        hooks: true
+      })
     }
   }
+  
   User.init(
     {
       username: {
@@ -48,13 +69,12 @@ module.exports = (sequelize, DataTypes) => {
           len: [60, 60]
         }
       }
-    },
-    {
+    }, {
       sequelize,
       modelName: 'User',
       defaultScope: {
         attributes: {
-          exclude: ['hashedPassword', 'email', 'createdAt', 'updatedAt']
+          exclude: ["hashedPassword", "email", "createdAt", "updatedAt"]
         }
       }
     }
