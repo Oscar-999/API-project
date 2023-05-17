@@ -21,8 +21,20 @@ module.exports = {
     {
       spotId: 1,
       userId: 2,
+      review: 'ok!',
+      stars: 3
+    },
+    {
+      spotId: 1,
+      userId: 3,
       review: 'Pool broo!',
       stars: 3
+    },
+    {
+      spotId: 2,
+      userId: 1,
+      review: 'trash',
+      stars: 2
     },
     {
       spotId: 2,
@@ -34,6 +46,18 @@ module.exports = {
       spotId: 3,
       userId: 3,
       review: 'Happiness died',
+      stars: 1
+    },
+    {
+      spotId: 3,
+      userId: 2,
+      review: 'Happiness sike',
+      stars: 1
+    },
+    {
+      spotId: 3,
+      userId: 1,
+      review: 'Happiness lies',
       stars: 1
     },
    ], {})
