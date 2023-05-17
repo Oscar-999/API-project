@@ -5,6 +5,7 @@ const { User,Spot,SpotImage,Review,sequelize, } = require('../../db/models');
 const router = express.Router();
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
+//Get all Spots
 router.get('/', async (req, res) => {
   try {
     const spots = await Spot.findAll({
@@ -127,7 +128,6 @@ router.get('/current', requireAuth, async (req, res) => {
 });
 
  // GET details of a spot from an id
-
 router.get('/:spotId', async (req, res) => {
   try {
     const spotId = req.params.spotId;
@@ -187,7 +187,44 @@ router.get('/:spotId', async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 });
+// Add an image to a spot based on spot id
+router.post('/:spotId/images', requireAuth, async (req, res) => {
+  try {
+    const spotId = req.params.spotId;
+    const userId = req.user.id;
+    const { url, preview } = req.body;
 
+    // Check if the spot exists and belongs to the current user
+    const spot = await Spot.findOne({
+      where: {
+        id: spotId,
+        ownerId: userId,
+      },
+    });
+
+    if (!spot) {
+      return res.status(404).json({ message: "Spot couldn't be found" });
+    }
+
+    // Create the image
+    const image = await SpotImage.create({
+      spotId,
+      url,
+      preview,
+    }, {
+      // Exclude createdAt, updatedAt, and spotId fields
+      attributes: { exclude: ['createdAt', 'updatedAt', 'spotId'] },
+    });
+
+    // Remove the updatedAt, createdAt, and spotId fields from the image object
+    const { updatedAt, createdAt, spotId: imageSpotId, ...imageWithoutTimestamps } = image.toJSON();
+
+    res.status(200).json(imageWithoutTimestamps);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
 
 //Create a Post
 router.post('/', requireAuth, async (req, res, next) => {
@@ -230,7 +267,80 @@ router.post('/', requireAuth, async (req, res, next) => {
     next(error);
   }
 });
+// Edit a Spot
+router.put('/:spotId', requireAuth, async (req, res) => {
+  try {
+    const spotId = req.params.spotId;
+    const userId = req.user.id;
+    const {
+      address,
+      city,
+      state,
+      country,
+      lat,
+      lng,
+      name,
+      description,
+      price,
+    } = req.body;
 
+    // Check if the spot exists and belongs to the current user
+    const spot = await Spot.findOne({
+      where: {
+        id: spotId,
+        ownerId: userId,
+      },
+    });
+
+    if (!spot) {
+      return res.status(404).json({ message: "Spot couldn't be found" });
+    }
+
+    // Update the spot
+    spot.address = address;
+    spot.city = city;
+    spot.state = state;
+    spot.country = country;
+    spot.lat = lat;
+    spot.lng = lng;
+    spot.name = name;
+    spot.description = description;
+    spot.price = price;
+
+    await spot.save();
+
+    res.status(200).json(spot);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+// Delete a spot
+router.delete('/:spotId', requireAuth, async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const spotId = req.params.spotId;
+
+    const spot = await Spot.findOne({
+      where: {
+        id: spotId,
+        ownerId: userId,
+      },
+    });
+
+    if (!spot) {
+      return res.status(404).json({ message: "Spot couldn't be found" });
+    }
+
+    await spot.destroy();
+
+    res.status(200).json({ message: "Successfully deleted" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
 
 module.exports = router;
 
