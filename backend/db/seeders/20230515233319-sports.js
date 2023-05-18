@@ -30,6 +30,18 @@ module.exports = {
       name: 'Cozy Cabin',
       description: 'A beautiful cabin in the woods',
       price: 300.0
+    },  
+    {
+      ownerId: 1,
+      address: '123 Jose Dr',
+      city: 'Louisville',
+      state: 'Kentucky',
+      country: 'United States',
+      lat: 48.7989,
+      lng: -169.2697,
+      name: 'Beautiful Resort',
+      description: 'Water park near by',
+      price: 120.0
     },
     {
       ownerId: 2,
@@ -54,6 +66,30 @@ module.exports = {
       name: 'New York House',
       description: 'Great price!',
       price: 599.99
+    },
+    {
+      ownerId: 3,
+      address: '124 Hobbs Ave',
+      city: 'Joliet',
+      state: 'Ohio',
+      country: 'United States',
+      lat: 88.9832,
+      lng: 46.3455,
+      name: 'Bad house',
+      description: 'Bad price!',
+      price: 189.99
+    },
+    {
+      ownerId: 3,
+      address: '112 Dance Street',
+      city: 'San Jose',
+      state: 'Kentucky',
+      country: 'United States',
+      lat: 30.13545,
+      lng: 45.78989,
+      name: 'Beach house',
+      description: 'Great place!',
+      price: 20.99
     },
    ], {})
   },

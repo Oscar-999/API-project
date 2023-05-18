@@ -5,66 +5,61 @@ const { User,Spot,SpotImage,Review,sequelize, } = require('../../db/models');
 const router = express.Router();
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
-//Get all Spots
-router.get('/', async (req, res) => {
-  try {
-    const spots = await Spot.findAll({
-      include: [
-        {
-          model: SpotImage,
-          as: 'SpotImages', 
-          where: { preview: true },
-          required: false,
-        },
-        {
-          model: Review,
-          as: 'Reviews', // Use 'Reviews' as the alias
-          attributes: [[sequelize.fn('AVG', sequelize.col('stars')), 'avgRating']],
-          required: false,
-        },
-      ],
-      group: ['Spot.id', 'SpotImages.id'],
-    });
+// GET ALL SPOTS
+router.get('/', [
+  // Validate query parameters using express-validator
+  check('page').optional().isInt({ min: 1 }).withMessage('Page must be greater than or equal to 1'),
+  check('size').optional().isInt({ min: 1, max: 20 }).withMessage('Size must be between 1 and 20'),
+  check('minLat').optional().isDecimal().withMessage('Minimum latitude must be a decimal number'),
+  check('maxLat').optional().isDecimal().withMessage('Maximum latitude must be a decimal number'),
+  check('minLng').optional().isDecimal().withMessage('Minimum longitude must be a decimal number'),
+  check('maxLng').optional().isDecimal().withMessage('Maximum longitude must be a decimal number'),
+  check('minPrice').optional().isDecimal({ min: 0 }).withMessage('Minimum price must be a decimal number greater than or equal to 0'),
+  check('maxPrice').optional().isDecimal({ min: 0 }).withMessage('Maximum price must be a decimal number greater than or equal to 0'),
+], async (req, res) => {
+  const errors = handleValidationErrors(check, req);
 
-    const formattedSpots = spots.map((spot) => {
-      let avgRating = 0;
-
-      if (spot.Reviews.length > 0) {
-        avgRating = parseFloat(spot.Reviews[0].getDataValue('avgRating')).toFixed(1);
-      }
-
-      let previewImage = null;
-
-      if (spot.SpotImages.length > 0) {
-        previewImage = spot.SpotImages[0].url;
-      } else {
-        previewImage = 'No preview image found';
-      }
-
-      return {
-        id: spot.id,
-        ownerId: spot.ownerId,
-        address: spot.address,
-        city: spot.city,
-        state: spot.state,
-        country: spot.country,
-        lat: spot.lat,
-        lng: spot.lng,
-        name: spot.name,
-        description: spot.description,
-        price: spot.price,
-        createdAt: spot.createdAt,
-        updatedAt: spot.updatedAt,
-        avgRating: avgRating,
-        previewImage: previewImage,
-      };
-    });
-
-    res.status(200).json({ Spots: formattedSpots });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Internal server error' });
+  if (errors) {
+    return res.status(400).json({ message: 'Bad Request', errors });
   }
+
+  const allSpots = await Spot.findAll({
+    include: [
+      { model: Review },
+      { model: SpotImage },
+    ],
+  });
+
+  let Spots = [];
+  allSpots.forEach((spot) => {
+    Spots.push(spot.toJSON());
+  });
+
+  Spots.forEach((spot) => {
+    let sum = 0;
+    spot.Reviews.forEach((e) => {
+      sum += e.stars;
+    });
+    spot.avgRating = sum / spot.Reviews.length;
+    delete spot.Reviews;
+  });
+
+  Spots.forEach((spot) => {
+    spot.SpotImages.forEach((e) => {
+      if (e.preview === true) {
+        spot.previewImage = e.url;
+      }
+    });
+    if (!spot.previewImage) {
+      spot.previewImage = 'No preview image found';
+    }
+    delete spot.SpotImages;
+    spot.price = parseFloat(spot.price);
+    spot.lng = parseFloat(spot.lng);
+    spot.lat = parseFloat(spot.lat);
+  });
+
+  return res.status(200).json({ Spots });
 });
 // Get all spots owned by the current user
 router.get('/current', requireAuth, async (req, res) => {
@@ -341,6 +336,8 @@ router.delete('/:spotId', requireAuth, async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 });
+
+
 
 module.exports = router;
 
