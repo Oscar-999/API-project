@@ -5,36 +5,45 @@ const { User, Spot, SpotImage,Booking, Review, sequelize } = require("../../db/m
 const router = express.Router();
 const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
-// ERROR HERE start and end date shows null
+
 // Get all Bookings for a Spot based on the Spot's id
-router.get('/:spotId/bookings', requireAuth, async (req, res) => {
+router.get('/:spotId/bookings', requireAuth, async (req, res, next) => {
   const { user } = req;
-  const spotId = await Spot.findByPk(req.params.spotId);
 
-  if (!spotId) { return res.status(404).json({ message: "Spot couldn't be found" })}
+  try {
+    const spot = await Spot.findByPk(req.params.spotId);
 
-  if (spotId.ownerId !== user.id) { 
-      const notOwner = await Booking.findAll({ 
-          where: {
-              spotId: req.params.spotId
-          },
-          attributes: [ 'startDate', 'endDate' ]
-      })
-      return res.status(200).json({ Bookings: notOwner})
+    if (!spot) {
+      return res.status(404).json({ message: "Spot couldn't be found" });
+    }
+
+    if (spot.ownerId !== user.id) {
+      const notOwnerBookings = await Booking.findAll({
+        where: {
+          spotId: req.params.spotId
+        },
+        attributes: ['startDate', 'endDate']
+      });
+
+      return res.status(200).json({ Bookings: notOwnerBookings });
+    } else {
+      const ownerBookings = await Booking.findAll({
+        where: {
+          spotId: req.params.spotId
+        },
+        include: {
+          model: User,
+          attributes: ['id', 'firstName', 'lastName']
+        }
+      });
+
+      return res.status(200).json({ Bookings: ownerBookings });
+    }
+  } catch (error) {
+    next(error);
   }
-  else {
-      const theOwner = await Booking.findAll ({
-          where: {
-              spotId: req.params.spotId
-          }, 
-          include: {
-              model: User,
-              attributes: ['id', 'firstName', 'lastName']
-          }
-      })
-      return res.status(200).json({ Bookings: theOwner})
-  }
-})
+});
+
 const validateGetAllSpots = [
   check("page")
     .optional()
@@ -233,8 +242,6 @@ router.get("/current", requireAuth, async (req, res) => {
 router.get("/:spotId", async (req, res) => {
   try {
     const spotId = req.params.spotId;
-
-    // Find the spot by id
     const spot = await Spot.findByPk(spotId, {
       include: [
         {
@@ -254,7 +261,6 @@ router.get("/:spotId", async (req, res) => {
       return res.status(404).json({ message: "Spot couldn't be found" });
     }
 
-    // Calculate average star rating and number of reviews for the spot
     const reviews = await Review.findAll({
       where: { spotId: spot.id },
     });
@@ -262,7 +268,6 @@ router.get("/:spotId", async (req, res) => {
     const totalStars = reviews.reduce((sum, review) => sum + review.stars, 0);
     const avgStarRating = numReviews > 0 ? totalStars / numReviews : 0;
 
-    // Prepare the response payload
     const response = {
       id: spot.id,
       ownerId: spot.ownerId,
