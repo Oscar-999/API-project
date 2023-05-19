@@ -1,11 +1,40 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const { setTokenCookie, requireAuth } = require("../../utils/auth");
-const { User, Spot, SpotImage,Booking, Review, sequelize } = require("../../db/models");
+const { User, Spot, SpotImage,Booking, Review, ReviewImage, sequelize } = require("../../db/models");
 const router = express.Router();
 const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
-
+// Get all reviews based on spots idea
+router.get('/:spotId/reviews', async (req, res, next) => {
+  try {
+    const spot = await Spot.findByPk(req.params.spotId);
+  
+    if (!spot) {
+      return res.status(404).json({ message: "Spot couldn't be found" });
+    }
+  
+    const reviews = await Review.findAll({
+      where: {
+        spotId: req.params.spotId
+      },
+      include: [
+        {
+          model: User,
+          attributes: ['id', 'firstName', 'lastName']
+        },
+        {
+          model: ReviewImage,
+          attributes: ['id', 'url']
+        }
+      ]
+    });
+  
+    return res.json({ Reviews: reviews });
+  } catch (error) {
+    next(error);
+  }
+});
 // Get all Bookings for a Spot based on the Spot's id
 router.get('/:spotId/bookings', requireAuth, async (req, res, next) => {
   const { user } = req;
@@ -294,6 +323,8 @@ router.get("/:spotId", async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 });
+
+
 // Add an image to a spot based on spot id
 router.post("/:spotId/images", requireAuth, async (req, res) => {
   try {
@@ -340,8 +371,55 @@ router.post("/:spotId/images", requireAuth, async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 });
+// addd a review spot id
+router.post('/:spotId/reviews', requireAuth, async (req, res) => {
+  const { review, stars } = req.body;
+  const { user } = req;
 
-//Create a Post
+  try {
+    const spot = await Spot.findByPk(req.params.spotId);
+    const comment = { message: 'Bad Request', errors: {} };
+
+    if (!review) {
+      comment.errors.review = 'Review text is required';
+    }
+    if (!stars || parseInt(stars) < 1 || parseInt(stars) > 5) {
+      comment.errors.stars = 'Stars must be an integer from 1 to 5';
+    }
+
+    if (Object.keys(comment.errors).length) {
+      return res.status(400).json({ message: comment.message, errors: comment.errors });
+    }
+
+    if (!spot) {
+      return res.status(404).json({ message: "Spot couldn't be found" });
+    }
+
+    const existingReview = await Review.findOne({
+      where: {
+        userId: user.id,
+        spotId: req.params.spotId
+      }
+    });
+
+    if (existingReview) {
+      return res.status(409).json({ message: 'User already has a review for this spot' });
+    }
+
+    const createdReview = await Review.create({
+      userId: user.id,
+      spotId: spot.id,
+      review: review,
+      stars: stars
+    });
+
+    return res.status(201).json(createdReview);
+  } catch (error) {
+    next(error);
+  }
+});
+
+//Create a Spot Post
 router.post("/", requireAuth, async (req, res, next) => {
   try {
     const {
