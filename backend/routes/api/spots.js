@@ -323,6 +323,75 @@ router.get("/:spotId", async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 });
+// Create a Booking from a Spot based on the Spot's id
+router.post('/spots/:spotId/bookings', requireAuth, async (req, res) => {
+  const { user } = req;
+  const { spotId } = req.params;
+  const { startDate, endDate } = req.body;
+
+  try {
+    // Check if the Spot exists
+    const spot = await Spot.findByPk(spotId);
+    if (!spot) {
+      return res.status(404).json({ message: "Spot couldn't be found" });
+    }
+
+    // Check if the Spot belongs to the current user
+    if (spot.ownerId === user.id) {
+      return res.status(403).json({ message: "You are not authorized to create a booking for this Spot" });
+    }
+
+    // Check for booking conflicts
+    const conflicts = await Booking.findOne({
+      where: {
+        spotId,
+        [Op.or]: [
+          {
+            startDate: {
+              [Op.lte]: endDate,
+            },
+            endDate: {
+              [Op.gte]: startDate,
+            },
+          },
+          {
+            startDate: {
+              [Op.between]: [startDate, endDate],
+            },
+          },
+          {
+            endDate: {
+              [Op.between]: [startDate, endDate],
+            },
+          },
+        ],
+      },
+    });
+
+    if (conflicts) {
+      return res.status(403).json({
+        message: "Sorry, this spot is already booked for the specified dates",
+        errors: {
+          startDate: "Start date conflicts with an existing booking",
+          endDate: "End date conflicts with an existing booking",
+        },
+      });
+    }
+
+    // Create the booking
+    const booking = await Booking.create({
+      spotId,
+      userId: user.id,
+      startDate,
+      endDate,
+    });
+
+    return res.status(200).json(booking);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
 
 
 // Add an image to a spot based on spot id
