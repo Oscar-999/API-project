@@ -1,56 +1,124 @@
-const express = require("express");
-const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { Booking,User,Spot } = require('../../db/models');
+const express = require('express');
+const { requireAuth } = require('../../utils/auth');
 const router = express.Router();
-const { check } = require('express-validator');
-const { handleValidationErrors } = require('../../utils/validation');
+const { Op } = require('sequelize');
+const { Spot, Review, SpotImage, User, Booking, sequelize, ReviewImage } = require('../../db/models');
 
-router.get('/:spotId/bookings', requireAuth, async (req, res) => {
-    const { spotId } = req.params;
-  
+
+
+
+// Get all of the Current User's Bookings
+router.get('/current', requireAuth, async (req, res) => {
     try {
-      const spot = await Spot.findByPk(spotId);
-  
-      if (!spot) {
-        return res.status(404).json({ message: "Spot couldn't be found" });
-      }
+      const { user } = req;
   
       const bookings = await Booking.findAll({
         where: {
-          spotId: spot.id,
+          userId: user.id,
         },
-        include: {
-          model: User,
-          attributes: ['id', 'firstName', 'lastName'],
-        },
+        include: [
+          {
+            model: Spot,
+            as: 'Spot',
+            attributes: ['id', 'ownerId', 'address', 'city', 'state', 'country', 'lat', 'lng', 'name', 'price'],
+            include: [
+              {
+                model: SpotImage,
+                as: 'SpotImages',
+                attributes: ['id', 'url'],
+                where: { preview: true },
+                required: false,
+              },
+            ],
+          },
+        ],
       });
   
       const formattedBookings = [];
   
       bookings.forEach((booking) => {
-        const formattedBooking = {
-          User: {
-            id: booking.User.id,
-            firstName: booking.User.firstName,
-            lastName: booking.User.lastName,
-          },
+        const spot = booking.Spot;
+        const previewImage = spot.SpotImages.length > 0 ? spot.SpotImages[0].url : null;
+  
+        formattedBookings.push({
           id: booking.id,
           spotId: booking.spotId,
+          Spot: {
+            id: spot.id,
+            ownerId: spot.ownerId,
+            address: spot.address,
+            city: spot.city,
+            state: spot.state,
+            country: spot.country,
+            lat: spot.lat,
+            lng: spot.lng,
+            name: spot.name,
+            price: spot.price,
+            previewImage: previewImage,
+          },
           userId: booking.userId,
           startDate: booking.startDate,
           endDate: booking.endDate,
           createdAt: booking.createdAt,
           updatedAt: booking.updatedAt,
-        };
-  
-        if (spot.ownerId === req.user.id) {
-          formattedBooking.User = undefined;
-        }
-  
-        formattedBookings.push(formattedBooking);
+        });
       });
   
       res.status(200).json({ Bookings: formattedBookings });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  });
+  
+  router.put('/:bookingId', requireAuth, async (req, res) => {
+    const { user } = req;
+    const { startDate, endDate } = req.body;
+  
+    try {
+      const booking = await Booking.findByPk(req.params.bookingId);
+  
+      if (!booking) {
+        return res.status(404).json({ message: "Booking couldn't be found" });
+      }
+  
+      if (booking.userId !== user.id) {
+        return res.status(403).json({ message: "You must log in as the owner of this booking to edit" });
+      }
+  
+      if (booking.endDate < new Date()) {
+        return res.status(403).json({ message: "Past bookings can't be modified" });
+      }
+  
+      // Format startDate and endDate to remove the time portion
+      const formattedStartDate = new Date(startDate).toISOString().split('T')[0];
+      const formattedEndDate = new Date(endDate).toISOString().split('T')[0];
+  
+      // Check for booking conflicts
+      const conflictingBooking = await Booking.findOne({
+        where: {
+          spotId: booking.spotId,
+          startDate: { [Op.lte]: formattedEndDate },
+          endDate: { [Op.gte]: formattedStartDate },
+          id: { [Op.not]: booking.id },
+        },
+      });
+  
+      if (conflictingBooking) {
+        return res.status(403).json({
+          message: "Sorry, this spot is already booked for the specified dates",
+          errors: {
+            startDate: "Start date conflicts with an existing booking",
+            endDate: "End date conflicts with an existing booking",
+          },
+        });
+      }
+  
+      booking.startDate = formattedStartDate;
+      booking.endDate = formattedEndDate;
+      await booking.save();
+  
+      return res.status(200).json(booking);
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: 'Internal server error' });

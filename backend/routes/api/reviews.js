@@ -1,19 +1,7 @@
 const express = require("express");
-const bcrypt = require("bcryptjs");
 const { setTokenCookie, requireAuth } = require("../../utils/auth");
-const {
-  User,
-  Spot,
-  SpotImage,
-  Review,
-  sequelize,
-  Booking,
-  ReviewImage,
-} = require("../../db/models");
+const {User,Spot,SpotImage,Review,sequelize,ReviewImage,Booking} = require("../../db/models");
 const router = express.Router();
-const { check } = require("express-validator");
-const { handleValidationErrors } = require("../../utils/validation");
-
 // Get all review of the current user
 router.get("/current", requireAuth, async (req, res, next) => {
   const { user } = req;
@@ -97,55 +85,57 @@ router.post("/:reviewId/images", requireAuth, async (req, res, next) => {
 
       return res.json({ id: image.id, url });
     } else {
-      return res
-        .status(403)
-        .json({
-          message: "Maximum number of images for this resource was reached",
-        });
+      return res.status(403).json({
+        message: "Maximum number of images for this resource was reached",
+      });
     }
   } catch (error) {
     next(error);
   }
 });
 
-// Edit a Review
-// router.put('/:reviewId', requireAuth, async (req, res) => {
-//   const { review, stars } = req.body;
-//   const { user } = req;
-//   const reviewId = await Review.findByPk(req.params.reviewId);
+//Edit a Review
+router.put("/:reviewId", requireAuth, async (req, res) => {
+  const { review, stars } = req.body;
+  const { user } = req;
 
-//   const comment = {
-//       message: 'Bad Request', errors: {}
-//   };
+  try {
+    const reviewId = await Review.findByPk(req.params.reviewId);
 
-//   if (!reviewId) {
-//       return res.status(404).json("Review couldn't be found")
-//   }
+    if (!reviewId) {
+      return res.status(404).json({ message: "Review not found" });
+    }
 
-//   if(review.userId !== user.id) {
-//       return res.status(403).json({ message: "You must login as the owner of this review to edit" })
-//   }
+    if (reviewId.userId !== user.id) {
+      return res
+        .status(403)
+        .json({ message: "You are not authorized to edit this review" });
+    }
 
-//   if (!review) {
-//       comment.errors.review = "Review text is required"
-//   }
+    const errors = {};
 
-//   if (!stars || stars < 1 || stars > 5) {
-//       comment.errors.review = "Stars must be an integer from 1 to 5"
-//   }
+    if (!review) {
+      errors.review = "Review text is required";
+    }
 
-//   if (Object.keys(comment.errors).length) {
-//       return res.status(400).json({ message: comment.message, errors: comment.errors })
-//   }
+    if (!stars || stars < 1 || stars > 5) {
+      errors.stars = "Stars must be an integer from 1 to 5";
+    }
 
-//   const editedReview = await reviewId.update({
-//       review, stars
-//   })
+    if (Object.keys(errors).length > 0) {
+      return res.status(400).json({ message: "Validation error", errors });
+    }
 
-//   await reviewId.save();
+    reviewId.review = review;
+    reviewId.stars = stars;
+    await reviewId.save();
 
-//   return res.status(200).json(editedReview);
-// })
+    return res.status(200).json(reviewId);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+});
 
 // Delete a Review
 router.delete("/:reviewId", requireAuth, async (req, res) => {
@@ -156,11 +146,9 @@ router.delete("/:reviewId", requireAuth, async (req, res) => {
       return res.status(404).json({ message: "Review couldn't be found" });
     }
     if (review.userId !== user.id) {
-      return res
-        .status(403)
-        .json({
-          message: "You must log in as the owner of this review to delete",
-        });
+      return res.status(403).json({
+        message: "You must log in as the owner of this review to delete",
+      });
     }
     await review.destroy();
     return res.status(200).json({ message: "Successfully deleted" });
