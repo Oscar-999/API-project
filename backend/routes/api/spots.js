@@ -207,70 +207,65 @@ router.get("/", validateGetAllSpots, async (req, res) => {
 
 // Get all spots owned by the current user
 router.get("/current", requireAuth, async (req, res) => {
-  try {
-    const userId = req.user.id;
+  const userId = req.user.id;
 
-    const spots = await Spot.findAll({
-      where: {
-        ownerId: userId,
+  const spots = await Spot.findAll({
+    where: {
+      ownerId: userId,
+    },
+    include: [
+      {
+        model: SpotImage,
+        as: "SpotImages",
+        where: { preview: true },
+        required: false,
       },
-      include: [
-        {
-          model: SpotImage,
-          as: "SpotImages",
-          where: { preview: true },
-          required: false,
-        },
-        {
-          model: Review,
-          as: "Reviews",
-          attributes: [
-            [sequelize.fn("AVG", sequelize.col("Reviews.stars")), "avgRating"],
-          ],
-          required: false,
-        },
-      ],
-      group: ["Spot.id", "SpotImages.id"],
-    });
+      {
+        model: Review,
+        as: "Reviews",
+        attributes: [
+          [sequelize.fn("AVG", sequelize.col("Reviews.stars")), "avgRating"],
+        ],
+        required: false,
+      },
+    ],
+    group: ["Spot.id", "SpotImages.id"],
+  });
 
-    const formattedSpots = spots.map((spot) => {
-      let avgRating = 0;
+  const formattedSpots = spots.map((spot) => {
+    let avgRating = 0;
 
-      if (spot.Reviews && spot.Reviews.length > 0) {
-        avgRating = parseFloat(
-          spot.Reviews[0].getDataValue("avgRating")
-        ).toFixed(1);
-      }
+    if (spot.Reviews && spot.Reviews.length > 0) {
+      avgRating = parseFloat(
+        spot.Reviews[0].getDataValue("avgRating")
+      ).toFixed(1);
+    }
 
-      const previewImage =
-        spot.SpotImages && spot.SpotImages.length > 0
-          ? spot.SpotImages[0].url
-          : null;
+    const previewImage =
+      spot.SpotImages && spot.SpotImages.length > 0
+        ? spot.SpotImages[0].url
+        : null;
 
-      return {
-        id: spot.id,
-        ownerId: spot.ownerId,
-        address: spot.address,
-        city: spot.city,
-        state: spot.state,
-        country: spot.country,
-        lat: spot.lat,
-        lng: spot.lng,
-        name: spot.name,
-        description: spot.description,
-        price: spot.price,
-        createdAt: spot.createdAt,
-        updatedAt: spot.updatedAt,
-        avgRating: avgRating,
-        previewImage: previewImage,
-      };
-    });
+    return {
+      id: spot.id,
+      ownerId: spot.ownerId,
+      address: spot.address,
+      city: spot.city,
+      state: spot.state,
+      country: spot.country,
+      lat: spot.lat,
+      lng: spot.lng,
+      name: spot.name,
+      description: spot.description,
+      price: spot.price,
+      createdAt: spot.createdAt,
+      updatedAt: spot.updatedAt,
+      avgRating: avgRating,
+      previewImage: previewImage,
+    };
+  });
 
-    res.status(200).json({ Spots: formattedSpots });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Internal server error" });
-  }
+  res.status(200).json({ Spots: formattedSpots });
 });
 
 // GET details of a spot from an id
