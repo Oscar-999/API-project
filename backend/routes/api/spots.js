@@ -206,45 +206,50 @@ router.get('/', validateGetAllSpots, async (req, res) => {
     offset: size * (page - 1)
   };
 
-  const allSpots = await Spot.findAll({
-    include: [
-      { model: Review },
-      { model: SpotImage }
-    ],
-    where: where,
-    ...pagination
-  });
+  try {
+    const allSpots = await Spot.findAll({
+      include: [
+        { model: Review },
+        { model: SpotImage }
+      ],
+      where: where,
+      ...pagination
+    });
 
-  const spots = allSpots.map(spot => {
-    const avgRating = spot.Reviews.reduce((sum, review) => sum + review.stars, 0) / spot.Reviews.length;
-    const previewImage = spot.SpotImages.find(image => image.preview === true);
+    const spots = allSpots.map(spot => {
+      const reviewCount = spot.Reviews.length;
+      const totalStars = spot.Reviews.reduce((sum, review) => sum + review.stars, 0);
+      const avgRating = reviewCount > 0 ? totalStars / reviewCount : 0;
+      const previewImage = spot.SpotImages.find(image => image.preview === true);
 
-    return {
-      id: spot.id,
-      ownerId: spot.ownerId,
-      address: spot.address,
-      city: spot.city,
-      state: spot.state,
-      country: spot.country,
-      lat: parseFloat(spot.lat),
-      lng: parseFloat(spot.lng),
-      name: spot.name,
-      description: spot.description,
-      price: parseFloat(spot.price),
-      createdAt: spot.createdAt,
-      updatedAt: spot.updatedAt,
-      avgRating: isNaN(avgRating) ? 0 : avgRating,
-      previewImage: previewImage ? previewImage.url : 'No preview image found'
-    };
-  });
+      return {
+        id: spot.id,
+        ownerId: spot.ownerId,
+        address: spot.address,
+        city: spot.city,
+        state: spot.state,
+        country: spot.country,
+        lat: parseFloat(spot.lat),
+        lng: parseFloat(spot.lng),
+        name: spot.name,
+        description: spot.description,
+        price: parseFloat(spot.price),
+        createdAt: spot.createdAt,
+        updatedAt: spot.updatedAt,
+        avgRating: avgRating,
+        previewImage: previewImage ? previewImage.url : 'No preview image found'
+      };
+    });
 
-  return res.status(200).json({
-    Spots: spots,
-    page: page,
-    size: size
-  });
+    return res.status(200).json({
+      Spots: spots,
+      page: page,
+      size: size
+    });
+  } catch (error) {
+    next(error);
+  }
 });
-
 
 // Get all spots owned by the current user
 router.get("/current", requireAuth, async (req, res) => {
