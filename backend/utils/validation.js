@@ -23,22 +23,7 @@ const handleValidationErrors = (req, _res, next) => {
 
 
 
-// const handleValidationErrors = (req, res, next) => {
-//   const errors = validationResult(req);
-//   if (!errors.isEmpty()) {
-//     const errorMessages = {};
-//     errors.array().forEach((error) => {
-//       errorMessages[error.param] = error.msg;
-//     });
-//     return errorMessages;
-//   }
-//   return null;
-// };
-
 module.exports = {
   handleValidationErrors,
 };
 
-// module.exports = {
-//   handleValidationErrors
-// };
