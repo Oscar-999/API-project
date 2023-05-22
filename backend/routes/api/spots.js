@@ -142,13 +142,13 @@ router.get("/", validateGetAllSpots, async (req, res) => {
       include: [
         {
           model: SpotImage,
-          as: "SpotImages", // Use 'SpotImages' as the alias
+          as: "SpotImages",
           where: { preview: true },
           required: false,
         },
         {
           model: Review,
-          as: "Reviews", // Use 'Reviews' as the alias
+          as: "Reviews",
           attributes: [
             [sequelize.fn("AVG", sequelize.col("Reviews.stars")), "avgRating"],
           ],
@@ -156,6 +156,8 @@ router.get("/", validateGetAllSpots, async (req, res) => {
         },
       ],
       group: ["Spot.id", "SpotImages.id", "Reviews.id"],
+      offset: (validatedPage - 1) * validatedSize,
+      limit: validatedSize,
     });
 
     const formattedSpots = spots.map((spot) => {
