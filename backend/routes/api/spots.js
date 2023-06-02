@@ -639,7 +639,7 @@ router.put("/:spotId", requireAuth, async (req, res) => {
   }
 });
 
-// Delete a spot
+// Delete a spot *
 router.delete("/:spotId", requireAuth, async (req, res) => {
   try {
     const userId = req.user.id;

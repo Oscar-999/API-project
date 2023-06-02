@@ -87,7 +87,7 @@ router.get("/current", requireAuth, async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 });
-
+// edit booking *
 router.put("/:bookingId", requireAuth, async (req, res) => {
   const { user } = req;
   const { startDate, endDate } = req.body;
@@ -111,16 +111,16 @@ router.put("/:bookingId", requireAuth, async (req, res) => {
         .json({ message: "Past bookings can't be modified" });
     }
 
-    // Format startDate and endDate to remove the time portion
+    //remove the time portion
     const formattedStartDate = new Date(startDate).toISOString().split("T")[0];
     const formattedEndDate = new Date(endDate).toISOString().split("T")[0];
 
-    // Check for booking conflicts
+    //Check forbooking conflicts
     const conflictingBooking = await Booking.findOne({
       where: {
         spotId: booking.spotId,
-        startDate: { [Op.lte]: formattedEndDate },
-        endDate: { [Op.gte]: formattedStartDate },
+        startDate:{[Op.lte]: formattedEndDate },
+        endDate: {[Op.gte]: formattedStartDate },
         id: { [Op.not]: booking.id },
       },
     });
