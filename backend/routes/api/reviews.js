@@ -2,7 +2,7 @@ const express = require("express");
 const { setTokenCookie, requireAuth } = require("../../utils/auth");
 const {User,Spot,SpotImage,Review,sequelize,ReviewImage,Booking} = require("../../db/models");
 const router = express.Router();
-// Get all review of the current user
+// Get all review of the current user *
 router.get("/current", requireAuth, async (req, res, next) => {
   const { user } = req;
   try {
