@@ -2,12 +2,12 @@ import { csrfFetch } from "./csrf";
 
 const GET_ALL_SPOTS = "spot/getAllSpots";
 const GET_SPOT = "spot/getSpot";
-const CREATE_SPOT = "spot/createSpot";
-const UPDATE_SPOT = "spot/updateSpot";
-const DELETE_SPOT = "spot/deleteSpot";
+// const CREATE_SPOT = "spot/createSpot";
+// const UPDATE_SPOT = "spot/updateSpot";
+// const DELETE_SPOT = "spot/deleteSpot";
 
 //Actions
-const getAllSpots = (spot) => {
+const getAllSpots = (spots) => {
   return {
     type: GET_ALL_SPOTS,
     spots,
@@ -21,25 +21,25 @@ const getSpot = (spot) => {
   };
 };
 
-const createSpot = (spot) => {
-  return {
-    type: CREATE_SPOT,
-    spot,
-  };
-};
+// const createSpot = (spot) => {
+//   return {
+//     type: CREATE_SPOT,
+//     spot,
+//   };
+// };
 
-const updateSpot = (spot) => {
-  return {
-    type: UPDATE_SPOT,
-    spot,
-  };
-};
-const deleteSpot = (spotId) => {
-  return {
-    type: DELETE_SPOT,
-    spotId,
-  };
-};
+// const updateSpot = (spot) => {
+//   return {
+//     type: UPDATE_SPOT,
+//     spot,
+//   };
+// };
+// const deleteSpot = (spotId) => {
+//   return {
+//     type: DELETE_SPOT,
+//     spotId,
+//   };
+// };
 
 /***************************************************************************************** */
 // Thunks
