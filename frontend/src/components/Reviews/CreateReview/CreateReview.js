@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../../context/Modal";
 import {  useHistory } from "react-router-dom";
-import {  thunkPostReviews } from "../../../store/review";
+import {   postReviewsThunk } from "../../../store/review";
 
 const CreateReview = ({spotId}) => {
 const user = useSelector((state) => state.session.user);
@@ -32,7 +32,7 @@ const user = useSelector((state) => state.session.user);
         stars,
       };
 
-      await dispatch(thunkPostReviews(payload, spotId));
+      await dispatch( postReviewsThunk(payload, spotId));
       history.push(`/spots/${spotId}`);
       closeModal();
     }
