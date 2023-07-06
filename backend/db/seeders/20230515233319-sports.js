@@ -39,6 +39,7 @@ module.exports = {
       country: 'United States',
       lat: 48.7989,
       lng: -169.2697,
+      description: "i am the danger",
       name: 'Breaking Bad House',
       price: 120.0
     },
