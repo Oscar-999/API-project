@@ -5,7 +5,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Spots from "./components/LandingPage/LandingPage";
 import SpotInfo from "./components/Spots/SpotInfo/SpotInfo.js";
-// import AllTiles from "./components/Spots/AllTiles/AllTiles";
+import AllTiles from "./components/Spots/AllTiles/AllTiles";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
