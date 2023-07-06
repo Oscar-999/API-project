@@ -28,7 +28,7 @@ module.exports = {
       lat: 37.7749,
       lng: -118.2437,
       name: 'Regular Show House',
-      description: "The Regular Show House is a vibrant and eccentric residence located in Elmore. With its charmingly weathered exterior and a lawn adorned with quirky ornaments, it reflects the show's playful nature. Inside, each room is filled with mismatched furniture, colorful decor, and a unique style that represents the characters' personalities. From the bustling kitchen to the chaotic bedrooms and the mysterious basement, the house is a delightful and imaginative backdrop for the show's zany adventures.",
+      description: "The Regular Show",
       price: 300.0
     },
     {
@@ -40,7 +40,6 @@ module.exports = {
       lat: 48.7989,
       lng: -169.2697,
       name: 'Breaking Bad House',
-      description: "The Breaking Bad house: Where chemistry meets chaos, where the aroma of danger lingers in the air, and where even the roof has an intense, gripping storyline. It's a home that will blow your mind, quite literally.",
       price: 120.0
     },
     {
@@ -52,7 +51,7 @@ module.exports = {
       lat: 34.0522,
       lng: -118.2437,
       name: 'Stark Tower',
-      description: "Stark Tower is a famous building located in the heart of a bustling city. It is a tall and sleek structure .",
+      description: "Stark Tower is a famous bu .",
       price: 590.0,
     },
     {
@@ -88,7 +87,7 @@ module.exports = {
       lat: 30.13545,
       lng: 45.78989,
       name: 'Bat Cave',
-      description: "The Bat Cave is Batman's secret underground headquarters located beneath Wayne Manor. It's a vast, dimly lit cave complex that serves as a high-tech sanctuary and base of operations for the Dark Knight and his allies.",
+      description: "The Bat Cave is Batmans.",
       price: 20.99
     },
    ], {})
