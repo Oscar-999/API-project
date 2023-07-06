@@ -35,13 +35,13 @@ module.exports = {
       }
     ], {});
   },
-
+  // 'RigbyMordecai', 'Ironman', 'Gumball', 'Demo-lition', 'Batman'
   async down (queryInterface, Sequelize) {
 
     options.tableName = 'Users';
     const Op = Sequelize.Op;
     await queryInterface.bulkDelete(options, {
-      username: { [Op.in]: ['RigbyMordecai', 'Ironman', 'Gumball', 'Demo-lition', 'Batman'] }
+      username: { [Op.in]: ['dylankinging', 'PetierCuh', 'joseman'] }
     }, {});
   }
 };
