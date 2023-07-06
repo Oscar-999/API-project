@@ -9,24 +9,24 @@ if (process.env.NODE_ENV === 'production') {
 
 module.exports = {
   async up (queryInterface, Sequelize) {
-  
+
    options.tableName = 'Bookings';
    await queryInterface.bulkInsert(options, [
     {
       spotId: 1,
-      userId: 1,
+      userId: 6,
       startDate: '2023-05-05',
       endDate: '2023-05-19'
     },
     {
       spotId: 2,
-      userId: 2,
+      userId: 6,
       startDate: '2023-09-04',
       endDate: '2023-09-22'
     },
     {
       spotId: 3,
-      userId: 3,
+      userId: 6,
       startDate: '2023-08-05',
       endDate: '2023-08-17'
     }
