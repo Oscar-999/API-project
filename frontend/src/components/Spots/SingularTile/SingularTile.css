@@ -26,18 +26,19 @@ img{
      padding-right: 10px;
  }
 
- .tooltip-textx {
+ .tooltip-text {
      visibility: hidden;
      position: absolute;
      z-index: 1;
      width: 100px;
-     color: black;
+
      font-size: 12px;
      font-weight: bolder;
-     /* rgb(201, 177, 244) */
-     background-color: rgb(138, 194, 127);
+     color: #8f4775;
+     background-color: #00ffff;
      border-radius: 10px;
      padding: 10px 15px 10px 15px;
+     justify-content: center;
    }
 
    .spot-tile:hover .tooltip-text{

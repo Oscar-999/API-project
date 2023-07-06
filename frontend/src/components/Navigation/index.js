@@ -10,7 +10,10 @@ function Navigation({ isLoaded }){
   return (<div className='nav-wrap'>
     <ul className='nav-bar'>
       <li className='home'>
-        <NavLink exact to="/">AirBnb</NavLink>
+        <NavLink exact to="/">
+       
+          MultiverseBnb
+          </NavLink>
       </li>
       {isLoaded && (
         <li className='profile-button'>
