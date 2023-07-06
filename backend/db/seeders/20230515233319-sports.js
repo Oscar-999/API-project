@@ -52,7 +52,7 @@ module.exports = {
       lat: 34.0522,
       lng: -118.2437,
       name: 'Stark Tower',
-      description: "Stark Tower is a famous building located in the heart of a bustling city. It is a tall and sleek structure that stands out in the skyline. Originally owned by the renowned inventor and superhero Tony Stark, also known as Iron Man, the tower served as his personal residence and headquarters. It was designed with state-of-the-art technology and had various advanced features, making it a symbol of innovation. Stark Tower was equipped with a spacious lab for scientific research, a luxurious penthouse for Tony Stark, and high-tech facilities for crime-fighting. Over the years, it became a prominent landmark and a symbol of superhero presence in the city.",
+      description: "Stark Tower is a famous building located in the heart of a bustling city. It is a tall and sleek structure .",
       price: 590.0,
     },
     {
@@ -64,7 +64,7 @@ module.exports = {
       lat: 35.679,
       lng: 70.3459,
       name: 'Amazing World of Gumball House',
-      description: "The Amazing World of Gumball house is a colorful and ever-changing suburban home in the fictional town of Elmore. It serves as the backdrop for the comedic and imaginative adventures of Gumball and his family. Each room has its own unique personality, filled with whimsical elements that contribute to the show's humor and creativity.",
+      description: "The Amazing World of Gumball house is a .",
       price: 599.99
     },
     {
