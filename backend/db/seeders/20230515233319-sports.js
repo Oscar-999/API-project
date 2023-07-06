@@ -32,7 +32,7 @@ module.exports = {
       price: 300.0
     },
     {
-      ownerId: 2,
+      ownerId: 1,
       address: '9809 Margo Street SW',
       city: ' Albuquerque',
       state: 'New Mexico',
@@ -44,7 +44,7 @@ module.exports = {
       price: 120.0
     },
     {
-      ownerId: 3,
+      ownerId: 2,
       address: '555 Avengers Avenue',
       city: 'New York City',
       state: 'NewYork',
