@@ -65,7 +65,7 @@ console.log(oneSpot)
             Hosted by {oneSpot.Owner.firstName} {oneSpot.Owner.lastName}
             <p>{oneSpot.description}</p>
           </div>
-          <div className="booking-description">
+          <div className="reserving-boxing">
             <div className="pricenstar">
               <div>
                 ${oneSpot.price} night

@@ -30,7 +30,9 @@
     margin-left: 50px;
 }
 
-.booking-description {
+.reserving-boxing {
+    border-radius: 25px;
+    margin-top: 1.5rem;
     border: 1px solid black;
     margin-right: 50px;
     padding: 25px 10px;
@@ -45,5 +47,9 @@
 #reserve-button {
     margin-left: 100px;
     margin-right: 100px;
-    padding: 0 60px;
+    padding: 14px 60px;
+    background-color: red;
+    color: White;
+    text-align: center;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }

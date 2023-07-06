@@ -108,6 +108,16 @@ module.exports = {
         url: "https://static.wikia.nocookie.net/theamazingworldofgumballfanfic/images/2/25/Gumball_Flushed.jpg/revision/latest?cb=20120402170817",
         preview: false
       },
+      {
+        spotId: 5,
+        url: "https://external-preview.redd.it/ja2rwASy69ySlG3q_Brb8RhD7Sq2gzUEqSxxAbomVS8.png?auto=webp&s=d94d3cd074c7933031287abca2bcfc9735c1c8a6",
+        preview: true
+      },
+      {
+        spotId: 6,
+        url: "https://upload.wikimedia.org/wikipedia/en/3/37/Batcave-Batman1.png",
+        preview: true
+      },
     ], {})
   },
 
