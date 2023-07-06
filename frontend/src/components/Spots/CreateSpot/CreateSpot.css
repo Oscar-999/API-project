@@ -1,0 +1,43 @@
+.form-element{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 25px;
+    width: 300px;
+    border-bottom: solid black;
+}
+
+.city-and-state{
+    display: flex;
+    flex-direction: row;
+
+}
+.city-input, .state-input{
+    width: 91%
+}
+
+.create-form-outer-container{
+    display: flex;
+    justify-content: center;
+}
+
+
+.create-country .create-address{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.form-photos-input{
+    margin-top: 15px;
+    width: 95%
+}
+
+textarea{
+    height:130px;
+    resize: none;
+}
+
+.errors{
+    color:red;
+}
