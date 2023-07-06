@@ -157,7 +157,7 @@ module.exports = {
       },
     ], {})
   },
-
+// sdf
   async down (queryInterface, Sequelize) {
     /**
      * Add commands to revert seed here.
