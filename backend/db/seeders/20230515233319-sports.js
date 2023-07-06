@@ -17,6 +17,7 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
+   //dfdsfs
    options.tableName = 'Spots';
    await queryInterface.bulkInsert(options, [
     {
@@ -32,7 +33,7 @@ module.exports = {
       price: 300.0
     },
     {
-      ownerId: 1,
+      ownerId: 2,
       address: '9809 Margo Street SW',
       city: ' Albuquerque',
       state: 'New Mexico',
@@ -44,7 +45,7 @@ module.exports = {
       price: 120.0
     },
     {
-      ownerId: 2,
+      ownerId: 3,
       address: '555 Avengers Avenue',
       city: 'New York City',
       state: 'NewYork',
@@ -56,7 +57,7 @@ module.exports = {
       price: 590.0,
     },
     {
-      ownerId: 3,
+      ownerId: 4,
       address: '12 Cartoon Lane',
       city: 'Elmore',
       state: 'CartoonNetwork',
@@ -68,7 +69,7 @@ module.exports = {
       price: 599.99
     },
     {
-      ownerId: 1,
+      ownerId: 5,
       address: '124 Island Dr',
       city: 'Dragonball',
       state: 'Hawaii',
@@ -80,7 +81,7 @@ module.exports = {
       price: 189.99
     },
     {
-      ownerId: 1,
+      ownerId: 6,
       address: '112 Unknown st',
       city: 'Gotham',
       state: 'New Jersey',
