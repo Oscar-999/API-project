@@ -17,7 +17,6 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-   //dfdsfs
    options.tableName = 'Spots';
    await queryInterface.bulkInsert(options, [
     {
@@ -57,7 +56,7 @@ module.exports = {
       price: 590.0,
     },
     {
-      ownerId: 4,
+      ownerId: 3,
       address: '12 Cartoon Lane',
       city: 'Elmore',
       state: 'CartoonNetwork',
@@ -69,7 +68,7 @@ module.exports = {
       price: 599.99
     },
     {
-      ownerId: 5,
+      ownerId: 1,
       address: '124 Island Dr',
       city: 'Dragonball',
       state: 'Hawaii',
@@ -81,7 +80,7 @@ module.exports = {
       price: 189.99
     },
     {
-      ownerId: 6,
+      ownerId: 1,
       address: '112 Unknown st',
       city: 'Gotham',
       state: 'New Jersey',
@@ -105,7 +104,7 @@ module.exports = {
     options.tableName = 'Spots';
     const Op = Sequelize.Op;
     await queryInterface.bulkDelete(options, {
-      ownerId: { [Op.in]: [1, 2, 3,4,5,6] }
+      ownerId: { [Op.in]: [1, 2, 3] }
     }, {})
   }
 };
