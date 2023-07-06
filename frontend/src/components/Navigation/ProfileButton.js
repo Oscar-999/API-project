@@ -38,11 +38,11 @@ function ProfileButton({ user }) {
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
-
+  const linkControl = 'nav-link-create' + (user ? '' : ' hidden')
   return (
     <>
     <div className="spot-wrapper">
-      <div className="link-control">
+      <div className={linkControl}>
         <NavLink to ="/spots/new">CreateSpot</NavLink>
       </div>
     </div>

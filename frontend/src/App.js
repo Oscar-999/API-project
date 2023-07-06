@@ -6,7 +6,7 @@ import Navigation from "./components/Navigation";
 import Spots from "./components/LandingPage/LandingPage";
 import SpotInfo from "./components/Spots/SpotInfo/SpotInfo.js";
 import CreateSpot from "./components/Spots/CreateSpot/CreateSpot";
-// import AllTiles from "./components/Spots/AllTiles/AllTiles";
+import AllTiles from "./components/Spots/AllTiles/AllTiles";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -19,7 +19,7 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route exact path="/" component={Spots} />
+          <Route exact path="/" component={AllTiles} />
           <Route path="/spots/new" component={CreateSpot}></Route>
           <Route path="/spots/current"></Route>
           <Route path="/spots/:spotId" component={SpotInfo} />
