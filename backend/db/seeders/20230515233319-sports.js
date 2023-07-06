@@ -17,6 +17,7 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
+   //dfdsfs
    options.tableName = 'Spots';
    await queryInterface.bulkInsert(options, [
     {
