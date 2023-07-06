@@ -1,4 +1,4 @@
-
+import './OpenModalButton.css'
 import React from "react";
 import { useModal } from "../../context/Modal";
 
@@ -16,8 +16,7 @@ function OpenModalButton({
     setModalContent(modalComponent);
   };
 
-  return <button onClick={onClick}>{buttonText}</button>;
+  return <button id='openbutton' onClick={onClick}>{buttonText}</button>;
 }
 
 export default OpenModalButton;
-
