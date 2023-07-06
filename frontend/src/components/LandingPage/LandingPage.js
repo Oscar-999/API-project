@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {thunkAllSpots } from "../../store/spot";
+import { thunkAllSpots } from "../../store/spot";
 import { NavLink } from "react-router-dom";
 import './LandingPage.css';
 
