@@ -68,7 +68,7 @@ module.exports = {
       price: 599.99
     },
     {
-      ownerId: 3,
+      ownerId: 4,
       address: '124 Island Dr',
       city: 'Dragonball',
       state: 'Hawaii',
@@ -80,7 +80,7 @@ module.exports = {
       price: 189.99
     },
     {
-      ownerId: 3,
+      ownerId: 5,
       address: '112 Unknown st',
       city: 'Gotham',
       state: 'New Jersey',
