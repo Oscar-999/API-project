@@ -1,5 +1,5 @@
 
-
+import '../../CreateSpot.css'
 const FormPhotos = ({previewUrl, setPreviewUrl, url1, setUrl1, url2, setUrl2, url3, setUrl3, url4, setUrl4, errors}) => {
     return (
         <div className="form-element">

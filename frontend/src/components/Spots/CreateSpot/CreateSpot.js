@@ -98,7 +98,7 @@ const CreateSpot = () => {
   };
 
   return (
-    <div className="create-form-outer-container">
+    <div className="create-formwrap">
       <form className="create-form-inner-container" onSubmit={onSubmit}>
         <Location
           errors={errors}

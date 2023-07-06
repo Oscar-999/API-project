@@ -1,5 +1,5 @@
 import './Information.css'
-
+import '../../CreateSpot.css'
 
 const Information = ({ description, setDescription, errors }) => {
     return (

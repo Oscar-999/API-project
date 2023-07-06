@@ -1,5 +1,5 @@
 import "./Location.css";
-
+import '../../CreateSpot.css'
 const Location = ({
   city,
   setCity,

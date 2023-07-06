@@ -16,7 +16,7 @@ const SpotReviews = ({ spotId }) => {
     <>
       <div>
         <OpenModalButton
-          buttonText="Post Your Review"
+          // buttonText="Post Your Review"
           modalComponent={<CreateReview spotId={spotId} />}
         />
       </div>
