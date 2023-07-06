@@ -20,7 +20,7 @@ module.exports = {
    options.tableName = 'ReviewImages';
    await queryInterface.bulkInsert(options, [
     {
-      reviewId: 1,
+      reviewId: 2,
       url: 'https://www.tastingtable.com/img/gallery/16-places-to-eat-and-drink-in-athens-greece/l-intro-1673379087.jpg'
     },
     {
