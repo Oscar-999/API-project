@@ -12,16 +12,6 @@ function LoginFormModal() {
   const [validationObject, setValidationObject] = useState({})
   const { closeModal } = useModal();
 
-  useEffect(()=>{
-    const errorsObject = {};
-
-    if(credential.length < 4)errorsObject.credential = 'Username must be at least 4 characters';
-
-    if(password.length < 6)errorsObject.password = 'Password must be at least 6 characters';
-
-    setValidationObject(errorsObject);
-  }, [credential, password])
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors({});
@@ -35,10 +25,22 @@ function LoginFormModal() {
       });
   };
 
+  let isDisabled = true;
+  if (credential.length > 4 && password.length > 6) {
+      isDisabled = false
+  }
+
+  const demoUser = () =>{
+    return dispatch(sessionActions.login({
+        credential: 'joseman',
+        password: 'password3',
+    }))
+    .then(closeModal)
+}
   return (
-    <>
-      <h1>Log In</h1>
+    <div className='loggin'>
       <form onSubmit={handleSubmit}>
+      <h1>Log In</h1>
         <label>
           Username or Email
           <input
@@ -60,9 +62,14 @@ function LoginFormModal() {
         {errors.credential && (
           <p>{errors.credential}</p>
         )}
-        <button type="submit">Log In</button>
+         <div className='login'>
+        <button type="submit" disabled={isDisabled}>Log In</button>
+        </div>
       </form>
-    </>
+      <div className="login2">
+                <button type='submit' onClick={demoUser}>Demo User</button>
+            </div>
+    </div>
   );
 }
 
