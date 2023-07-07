@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { Switch, Route } from "react-router-dom";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
-// import Spots from "./components/LandingPage/LandingPage";
+
 import CreateSpot from "./components/Spots/CreateSpot/CreateSpot";
 import AllTiles from "./components/Spots/AllTiles/AllTiles";
 import Manager from "./components/Spots/Manager/Manager";
