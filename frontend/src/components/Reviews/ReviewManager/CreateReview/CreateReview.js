@@ -11,6 +11,7 @@ const CreateReview = ({spot}) => {
     const dispatch = useDispatch();
     const [text, setText] = useState('');
     const [stars, setStars] = useState(1);
+    // eslint-disable-next-line no-unused-vars
     const [starRating, setStarRating] = useState()
     const [errors, setErrors] = useState({});
     const user = useSelector(state => state.session.user)

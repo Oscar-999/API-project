@@ -39,7 +39,7 @@ function ProfileButton({ user }) {
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
-  const linkControl = "nav-link-create" + (user ? "" : " hidden");
+  // const linkControl = "nav-link-create" + (user ? "" : " hidden");
   return (
     <>
       <button onClick={openMenu}>
