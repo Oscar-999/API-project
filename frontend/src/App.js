@@ -9,6 +9,7 @@ import CreateSpot from "./components/Spots/CreateSpot/CreateSpot";
 import AllTiles from "./components/Spots/AllTiles/AllTiles";
 import Manager from "./components/Spots/Manager/Manager";
 import Reviews from "./components/Reviews/Reviews";
+import EditSpot from "./components/Spots/Manager/Edit/EditSpot ";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -26,7 +27,7 @@ function App() {
           <Route path="/spots/current" component={Manager}/>
           <Route path="/reviews/current" component={Reviews}/>
           <Route path="/spots/:spotId" component={SpotInfo} />
-
+          <Route exact path="/spots/:spotId/edit" component={EditSpot}/>
         </Switch>
       )}
     </>
