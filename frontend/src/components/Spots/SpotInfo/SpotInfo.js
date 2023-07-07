@@ -3,11 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { thunkGetSpot, thunkAllSpots  } from "../../../store/spot";
 import { useParams, } from "react-router-dom";
 import "./SpotInfo.css";
-import SpotReviews from "../../Reviews/SpotReviews/SpotReviews";
+
 
 const SpotInfo = () => {
   const dispatch = useDispatch();
   const { spotId } = useParams();
+
   const oneSpot = useSelector((state) => state.spots.singleSpot);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -79,7 +80,7 @@ console.log(oneSpot)
           <div className="reviews-section">
             <div>★ {oneSpot.avgStarRating.toFixed(1)} · {oneSpot.numReviews} reviews</div>
           </div>
-          <SpotReviews spotId={spotId} />
+         
         </div>
       </>
     )

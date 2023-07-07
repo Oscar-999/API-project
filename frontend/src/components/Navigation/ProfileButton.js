@@ -5,6 +5,7 @@ import OpenModalMenuItem from './OpenModalMenuItem';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import { NavLink } from "react-router-dom";
+
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
@@ -24,7 +25,7 @@ function ProfileButton({ user }) {
       }
     };
 
-    document.addEventListener('click', closeMenu);
+    document.addEventListener("click", closeMenu);
 
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
@@ -38,48 +39,53 @@ function ProfileButton({ user }) {
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
-  const linkControl = 'nav-link-create' + (user ? '' : ' hidden')
+  const linkControl = "nav-link-create" + (user ? "" : " hidden");
   return (
     <>
-    <div className="spot-wrapper">
-      <div className={linkControl}>
-        <NavLink to ="/spots/new">CreateSpot</NavLink>
-      </div>
-    </div>
       <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
-      </button>
-      <ul className={ulClassName} ref={ulRef}>
-        {user ? (
-          <>
-            <li>{user.username}</li>
-            <li>{user.firstName} {user.lastName}</li>
-            <li>{user.email}</li>
-            <li><NavLink to='/spots/current'className="managerspots-link"  >
-            ManageSpots
-              </NavLink>
-              </li>
-            <li>
-              <button onClick={logout}>Log Out</button>
-            </li>
-          </>
-        ) : (
-          <>
-            <OpenModalMenuItem
-              itemText="Log In"
-              onItemClick={closeMenu}
-              modalComponent={<LoginFormModal />}
-            />
-            <OpenModalMenuItem
-              itemText="Sign Up"
-              onItemClick={closeMenu}
-              modalComponent={<SignupFormModal />}
-            />
-          </>
-        )}
-      </ul>
-    </>
+                <i className="fas fa-user-circle" />
+            </button>
+            <ul className={ulClassName} ref={ulRef}>
+                {user ? (
+                    <>
+                        <li>Hello, {user.firstName} {user.lastName}</li>
+                        <li>{user.username}</li>
+                        <li>{user.email}</li>
+                        <li>
+                        <NavLink exact to='/spots/current'>
+                            Manage Spots
+                            </NavLink>
+                        </li>
+                        <li>
+                        <NavLink exact to='/reviews/current'>
+                            Manage Reviews
+                            </NavLink>
+                        </li>
+
+                        <li>
+                            <button onClick={logout}>
+                                Log Out
+                                </button>
+                        </li>
+                    </>
+                ) : (
+                    <>
+                        <OpenModalMenuItem
+                            buttonText="Log In"
+                            onItemClick={closeMenu}
+                            modalComponent={<LoginFormModal />}
+                        />
+                        <OpenModalMenuItem
+                            buttonText="Sign Up"
+                            onItemClick={closeMenu}
+                            modalComponent={<SignupFormModal />}
+                        />
+                    </>
+                )}
+            </ul>
+        </>
   );
 }
+
 
 export default ProfileButton;
