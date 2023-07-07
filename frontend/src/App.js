@@ -4,12 +4,13 @@ import { Switch, Route } from "react-router-dom";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 // import Spots from "./components/LandingPage/LandingPage";
-import SpotInfo from "./components/Spots/SpotInfo/SpotInfo.js";
 import CreateSpot from "./components/Spots/CreateSpot/CreateSpot";
 import AllTiles from "./components/Spots/AllTiles/AllTiles";
 import Manager from "./components/Spots/Manager/Manager";
 import Reviews from "./components/Reviews/Reviews";
 import EditSpot from "./components/Spots/Manager/Edit/EditSpot ";
+import SpotShow from "./components/Spots/SpotInfo/SpotDetail";
+import SpotInfo from "./components/Spots/SpotInfo/SpotDetail";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -27,7 +28,7 @@ function App() {
           <Route path="/spots/current" component={Manager}/>
           <Route path="/reviews/current" component={Reviews}/>
           <Route path="/spots/:spotId" component={SpotInfo} />
-          <Route exact path="/spots/:spotId/edit" component={EditSpot}/>
+          <Route path="/spots/:spotId/edit" component={EditSpot}/>
         </Switch>
       )}
     </>

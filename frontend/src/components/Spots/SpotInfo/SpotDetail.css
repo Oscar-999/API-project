@@ -1,110 +1,163 @@
-.reserve-box{
-    border: 1px solid black;
-    border-radius: 20px;
-    width: fit-content;
-    height: 100%;
+.info {
+    font-size: 16px;
+    margin-bottom: 1rem;
+}
+
+img {
+    border-radius: 5px;
+}
+
+.spot-box h1 {
+    font-size: 30px;
+    margin-bottom: 1rem;
+}
+
+.box {
+    margin-left: 4rem;
+    margin-right: 4rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.reserve-wrap h2 {
+    margin-bottom: 1rem;
+}
+
+.reserve-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: solid 2px black;
+}
+
+.reserve {
+    border: solid 2px black;
+   margin-bottom: 1rem;
     display: flex;
     flex-direction: column;
-    margin-top: 1.5rem;
-    max-height: 150px;
-}
-
-.fa-solid{
-    display:flex;
     align-items: center;
+    justify-content: flex-end;
+    width: 350px;
+    border-radius: 8px;
 }
 
-.description-div{
-    display:flex;
-    justify-content: space-between;
-    border-bottom: solid black;
-    padding-bottom: 3rem;
-}
-
-.description{
-    margin-right: 50px;
-}
-
-.child{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.reserve-box-info{
-    display: flex;
-    justify-content: space-between;
-}
-
-.images-div{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-    "previewImage otherImages";
-    column-gap: 10px;
-}
-
-.preview-image{
-    grid-area: previewImage;
-    width: 100%;
-    height: 100%;
-    border-radius: 20px 0 0 20px;
-}
-
-
-.other-images-div{
-    grid-area: otherImages;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-template-areas:
-    'one two'
-    'three four';
-    row-gap: 10px;
-    column-gap: 10px;
-}
-
-.one{
-    grid-area: one;
-    border-radius: 0;
-}
-
-.two{
-    grid-area: two;
-    border-radius: 0 20px 0 0;
-}
-
-.three{
-    grid-area: three;
-    border-radius: 0;
-}
-
-.four{
-    grid-area: four;
-    border-radius: 0 0 20px 0;
-}
-
-.reserve-button-div{
+.reserve button {
     width: 300px;
-    height: 35px;
-    display: flex;
-    justify-content: center;
-}
-
-.reserve-button{
-    width: 260px;
     height: 40px;
-    background-color: var(--app-color);
-    border-color: var(--app-color);
-    box-shadow: 4px 4px 5px rgb(151, 150, 150);
-    cursor: pointer
+    border-radius: none;
+    background-color: rgb(236, 86, 70);
+    color: white;
+    box-shadow: 1px 1px 1px 1px black;
+    margin: 1rem;
+}
+
+.host {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    justify-content: space-evenly;
+}
+
+.images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .5rem;
 
 }
 
-.spot-details-div{
-    margin: 0 40px;
+.img1{
+    width:670px;
 }
 
-.review-list-div{
-    margin: 0 40px;
+.img1 img{
+    height: 400px;
+    width: 100%;
+}
+
+.img2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: .5rem;
+    column-gap: .5rem;
+    width:670px
+}
+
+.img2 img {
+    height: 200px;
+    width: 100%;
+}
+
+.modal button {
+    width: 150px;
+    height: 35px;
+    background-color: gray;
+    color: white;
+}
+
+.money {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: .75rem;
+    justify-content: space-between;
+    width: 300px;
+}
+
+.new-post {
+    position: static;
+}
+
+@media (max-width: 1300px) {
+    .img2 {
+        grid: auto-flow/ 1fr 1fr;
+        /* display: flex;
+        flex-direction: column; */
+    }
+
+    .img1 {
+        width: 570px;
+    }
+
+    .img img {
+        height: fit-content
+    }
+
+    .img2 {
+        width: 570px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .img2 {
+        grid: auto-flow/ 1fr 1fr;
+        /* display: flex;
+        flex-direction: column; */
+    }
+    .img1{
+        width: 440px;
+    }
+    .img img{
+        height: fit-content
+    }
+    .img2{
+        width:440px;
+    }
+}
+
+@media (max-width: 900px) {
+    .img2 {
+        grid: auto-flow/ 1fr 1fr;
+    }
+
+    .img1 {
+        width: 350px;
+    }
+
+    .img img {
+        height: fit-content
+    }
+
+    .img2 {
+        width: 350px;
+    }
 }
