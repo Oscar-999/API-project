@@ -13,6 +13,7 @@ const Spots = () => {
     dispatch(thunkAllSpots());
   }, [dispatch]);
 
+  
   const renderSpots = () =>
     allSpots.map((spot) => (
       <NavLink key={spot.id} to={`/spots/${spot.id}`}>
