@@ -47,7 +47,8 @@ ul{
 .login2 button{
     width: 300px;
     height: 40px;
-    box-shadow: 2px 2px 2px grey;
+    /* box-shadow: 2px 2px 2px grey; */
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
     border: solid grey;
    margin-bottom: 2rem;
     display: flex;
