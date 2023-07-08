@@ -9,7 +9,7 @@ import ManageSpots from "./components/Spots/ManageSpots/ManageSpots";
 import EditSpot from "./components/Spots/ManageSpots/EditSpot/EditSpot";
 import ManageReviews from "./components/Reviews/ManageReviews/EditReview";
 import CreateSpot from "./components/Spots/ManageSpots/CreateSpot/CreateSpot";
-import LandingPage from "./components/LandingPage/Landingpage";
+import LandingPage from "./components/LandingPage/LandingPage";
 import SpotInfo from "./components/Spots/SpotInfo/SpotInfo";
 
 function App() {
