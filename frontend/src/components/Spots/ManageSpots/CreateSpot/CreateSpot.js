@@ -46,7 +46,7 @@ const CreateSpot = () => {
   SpotImages.forEach((image) => {
     if (image.url === "") {
       image.url =
-        "https://t4.ftcdn.net/jpg/05/07/58/41/360_F_507584110_KNIfe7d3hUAEpraq10J7MCPmtny8EH7A.jpg";
+        "https://t4.ftcdn.net/jpg/04/73/25/49/360_F_473254957_bxG9yf4ly7OBO5I0O5KABlN930GwaMQz.jpg";
     }
   });
 
