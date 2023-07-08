@@ -32,8 +32,8 @@ function LoginFormModal() {
 
     const demoUser = () =>{
         return dispatch(sessionActions.login({
-            credential: 'joseman',
-            password: 'password3',
+            credential: 'demouser',
+            password: 'password123',
         }))
         .then(closeModal)
     }
