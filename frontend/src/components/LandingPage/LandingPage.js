@@ -1,41 +1,55 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { thunkAllSpots } from "../../store/spot";
-import { NavLink } from "react-router-dom";
-import './LandingPage.css';
+import { thunkAllSpots } from "../../store/spots";
+import { Link } from "react-router-dom";
+import "./LandingPage.css";
 
-const Spots = () => {
+//dispatch to fetch data and put it in the store
+//useSelector grabs data fromthe store and give component access to data
+
+const LandingPage = () => {
+  //convert spots obj to list
+  //normalize spot data
   const dispatch = useDispatch();
-  const spots = useSelector((state) => state.spots);
-  const allSpots = Object.values(spots.allSpots);
+  const spotObj = useSelector((state) => state.spots.allSpots);
+  const spotList = Object.values(spotObj);
 
+  //useEffect to trigger dipatch of thunk
   useEffect(() => {
     dispatch(thunkAllSpots());
   }, [dispatch]);
 
-  
-  const renderSpots = () =>
-    allSpots.map((spot) => (
-      <NavLink key={spot.id} to={`/spots/${spot.id}`}>
-        <div className="each-spot">
-          <img id="spot-image" src={spot.previewImage} alt="img" />
-          <div className="review">
-            <b>★ {spot.avgRating}</b>
-          </div>
-          <div className="city">{spot.city}, {spot.state}</div>
-          <div className="country">{spot.country}</div>
-          <div className="price">
-            <b>${spot.price}</b> night
-          </div>
-        </div>
-      </NavLink>
-    ));
+  if (!spotList) {
+    return null;
+  }
 
+  //show data on page through return jsx, map through list of spot
   return (
-    <div className="spots-container">
-      {renderSpots()}
-    </div>
+    <main>
+      <ul>
+        {spotList.length > 0 &&
+          spotList.map((spot) => (
+            <div key={spot.id} className="spot" title={spot.name}>
+              <Link to={`/spots/${spot.id}`}>
+                <div className="image">
+                  <img src={spot.previewImage} alt="home" />
+                </div>
+                <div className="list">
+                  <div className="star">
+                    <li>
+                      {spot.city}, {spot.state}
+                    </li>
+                    {!spot.avgRating && <li>★ New</li>}
+                    {spot.avgRating && <li>★ {spot?.avgRating.toFixed(1)}</li>}
+                  </div>
+                  <li>${spot.price} night</li>
+                </div>
+              </Link>
+            </div>
+          ))}
+      </ul>
+    </main>
   );
 };
-
-export default Spots;
+export default LandingPage;

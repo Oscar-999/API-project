@@ -5,45 +5,49 @@ import OpenModalMenuItem from './OpenModalMenuItem';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import { NavLink } from "react-router-dom";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function ProfileButton({ user }) {
-  const dispatch = useDispatch();
-  const [showMenu, setShowMenu] = useState(false);
-  const ulRef = useRef();
+    const dispatch = useDispatch();
+    const [showMenu, setShowMenu] = useState(false);
+    const ulRef = useRef();
+    const history = useHistory()
 
-  const openMenu = () => {
-    if (showMenu) return;
-    setShowMenu(true);
-  };
 
-  useEffect(() => {
-    if (!showMenu) return;
-
-    const closeMenu = (e) => {
-      if (!ulRef.current.contains(e.target)) {
-        setShowMenu(false);
-      }
+    const openMenu = () => {
+        if (showMenu) return;
+        setShowMenu(true);
     };
 
-    document.addEventListener("click", closeMenu);
+    useEffect(() => {
+        if (!showMenu) return;
 
-    return () => document.removeEventListener("click", closeMenu);
-  }, [showMenu]);
+        const closeMenu = (e) => {
+            if (!ulRef.current.contains(e.target)) {
+                setShowMenu(false);
+            }
+        };
 
-  const closeMenu = () => setShowMenu(false);
+        document.addEventListener('click', closeMenu);
 
-  const logout = (e) => {
-    e.preventDefault();
-    dispatch(sessionActions.logout());
-    closeMenu();
-  };
+        return () => document.removeEventListener("click", closeMenu);
+    }, [showMenu]);
 
-  const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
-  // const linkControl = "nav-link-create" + (user ? "" : " hidden");
-  return (
-    <>
-      <button onClick={openMenu}>
-                <i className="fas fa-user-circle" />
+    const closeMenu = () => setShowMenu(false);
+
+    const logout = (e) => {
+        e.preventDefault();
+        dispatch(sessionActions.logout());
+        closeMenu();
+        history.push('/')
+    };
+
+    const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
+
+    return (
+        <>
+            <button onClick={openMenu}>
+                 <i className="fas fa-user-circle" />
             </button>
             <ul className={ulClassName} ref={ulRef}>
                 {user ? (
@@ -84,8 +88,7 @@ function ProfileButton({ user }) {
                 )}
             </ul>
         </>
-  );
+    );
 }
-
 
 export default ProfileButton;

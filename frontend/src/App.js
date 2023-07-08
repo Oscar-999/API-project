@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Switch, Route } from "react-router-dom";
+import { Switch } from "react-router-dom";
 import * as sessionActions from "./store/session";
-import Navigation from "./components/Navigation";
+import Navigation from "./components/Navigation/Navigation";
+import { Route } from "react-router-dom";
 
-import CreateSpot from "./components/Spots/CreateSpot/CreateSpot";
-import AllTiles from "./components/Spots/AllTiles/AllTiles";
-import Manager from "./components/Spots/Manager/Manager";
-import Reviews from "./components/Reviews/Reviews";
-import EditSpot from "./components/Spots/Manager/Edit/EditSpot ";
-import SpotShow from "./components/Spots/SpotInfo/SpotDetail";
-import SpotInfo from "./components/Spots/SpotInfo/SpotDetail";
+import ManageSpots from "./components/Spots/ManageSpots/ManageSpots";
+import EditSpot from "./components/Spots/ManageSpots/EditSpot/EditSpot";
+import ManageReviews from "./components/Reviews/ManageReviews/EditReview";
+import CreateSpot from "./components/Spots/ManageSpots/CreateSpot/CreateSpot";
+import LandingPage from "./components/LandingPage/Landingpage";
+import SpotInfo from "./components/Spots/SpotInfo/SpotInfo";
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -23,12 +24,12 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route exact path="/" component={AllTiles} />
-          <Route path="/spots/new" component={CreateSpot}></Route>
-          <Route path="/spots/current" component={Manager}/>
-          <Route path="/reviews/current" component={Reviews}/>
-          <Route path="/spots/:spotId" component={SpotInfo} />
-          <Route path="/spots/:spotId/edit" component={EditSpot}/>
+          <Route exact path={"/"} component={LandingPage}/>
+          <Route exact path={"/spots/new"} component={CreateSpot}/>
+          <Route exact path={"/spots/current"}component={ManageSpots}/>
+          <Route exact path={"/spots/:spotId"} component={SpotInfo}/>
+          <Route exact path={"/reviews/current"}component={ManageReviews}/>
+          <Route exact path={"/spots/:spotId/edit"} component={EditSpot}/>
         </Switch>
       )}
     </>
