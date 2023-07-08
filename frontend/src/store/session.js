@@ -1,13 +1,8 @@
-// frontend/src/store/session.js
 import { csrfFetch } from "./csrf";
 
-
-//TYPE
 const SET_USER = "session/setUser";
 const REMOVE_USER = "session/removeUser";
 
-
-// ACTION CREATORS
 const setUser = (user) => {
     return {
         type: SET_USER,
@@ -21,8 +16,6 @@ const removeUser = () => {
     };
 };
 
-
-// THUNK ACTION CREATORS
 export const login = (user) => async (dispatch) => {
     const { credential, password } = user;
     const response = await csrfFetch("/api/session", {
@@ -36,8 +29,6 @@ export const login = (user) => async (dispatch) => {
     dispatch(setUser(data.user));
     return response;
 };
-
-
 export const restoreUser = () => async (dispatch) => {
     const response = await csrfFetch("/api/session");
     const data = await response.json();
@@ -64,13 +55,12 @@ export const signup = (user) => async (dispatch) => {
 
 export const logout = () => async (dispatch) => {
     const response = await csrfFetch('/api/session', {
-      method: 'DELETE',
+        method: 'DELETE',
     });
     dispatch(removeUser());
     return response;
-  };
+};
 
-// REDUCER
 const initialState = { user: null };
 
 const sessionReducer = (state = initialState, action) => {
