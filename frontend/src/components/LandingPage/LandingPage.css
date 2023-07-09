@@ -16,7 +16,7 @@ main ul {
 
 .spot{
     margin:1rem;
-    width: 310px;
+    width: 410px;
     transition: box-shadow .3s;
     border-radius: 6px;
 }
@@ -27,7 +27,7 @@ main ul {
 
 .image img{
     height:240px;
-    width:310px;
+    width:410px;
 }
 
 .price{

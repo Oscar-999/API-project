@@ -40,8 +40,13 @@ const LandingPage = () => {
                     <li>
                       {spot.city}, {spot.state}
                     </li>
-                    {!spot.avgRating && <li>★ New</li>}
-                    {spot.avgRating && <li>★ {spot?.avgRating.toFixed(1)}</li>}
+                    {spot.avgRating === 0 ? (
+                      <li>★ New</li>
+                    ) : (
+                      spot.avgRating && (
+                        <li>★ {spot?.avgRating.toFixed(1)}</li>
+                      )
+                    )}
                   </div>
                   <li>${spot.price} night</li>
                 </div>
