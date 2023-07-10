@@ -9,7 +9,7 @@ import "./CreateReview.css";
 const CreateReview = ({ spot }) => {
   const dispatch = useDispatch();
   const [text, setText] = useState("");
-  const [stars, setStars] = useState(1);
+  const [stars, setStars] = useState();
   // eslint-disable-next-line
   const [starRating, setStarRating] = useState();
   const [errors, setErrors] = useState({});
@@ -49,7 +49,7 @@ const CreateReview = ({ spot }) => {
   };
 
   let isDisabled = true;
-  if (text.length > 10 && Object.values(errors).length === 0) {
+  if (text.length >= 10 && Object.values(errors).length === 0) {
     isDisabled = false;
   }
 

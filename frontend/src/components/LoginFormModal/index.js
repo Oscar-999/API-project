@@ -26,7 +26,7 @@ function LoginFormModal() {
     };
 
     let isDisabled = true;
-    if (credential.length > 4 && password.length > 6) {
+    if (credential.length >= 4 && password.length >= 6) {
         isDisabled = false
     }
 
