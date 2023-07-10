@@ -19,10 +19,10 @@ const Delete = ({ spot }) => {
         <h1>Confirm Delete</h1>
         <h4>Are you sure you want to remove this spot from the listings?</h4>
         <form onSubmit={submitHandler}>
-          <div className="red">
+          <div className="confirm">
             <button type="submit">Yes(Delete Spot)</button>
           </div>
-          <div className="grey">
+          <div className="cancel">
             <button onClick={closeModal}>No(Keep Spot)</button>
           </div>
         </form>

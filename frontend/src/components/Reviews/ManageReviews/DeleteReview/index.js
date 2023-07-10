@@ -4,10 +4,9 @@ import { useModal } from "../../../../context/Modal";
 import { thunkUserReviews, deleteReviewThunk } from "../../../../store/reviews";
 import { thunkOneSpot } from "../../../../store/spots";
 
-function DeleteReview({ review, spot }) {
+const DeleteReview = ({ review, spot }) => {
   const dispatch = useDispatch();
   const { closeModal } = useModal();
-
   const submitHandler = async (e) => {
     e.preventDefault();
     const deleted = await dispatch(deleteReviewThunk(review));
@@ -17,7 +16,6 @@ function DeleteReview({ review, spot }) {
       closeModal();
     }
   };
-
   return (
     <>
       <div className="delete">

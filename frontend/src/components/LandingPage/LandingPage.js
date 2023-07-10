@@ -5,8 +5,6 @@ import { thunkAllSpots } from "../../store/spots";
 import { Link } from "react-router-dom";
 import "./LandingPage.css";
 
-
-
 const LandingPage = () => {
   const dispatch = useDispatch();
   const spotObj = useSelector((state) => state.spots.allSpots);

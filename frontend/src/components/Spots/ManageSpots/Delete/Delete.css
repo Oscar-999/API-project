@@ -16,12 +16,12 @@
     align-self: center;
 }
 
-.red button{
+.confirm button{
     background-color: #ff5a5f;
     color: white
 }
 
-.grey button{
+.cancel button{
     background-color: #666666;
     color:white
 }

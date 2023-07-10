@@ -2,7 +2,7 @@ import React from "react";
 import DeleteReview from "../../../Reviews/ManageReviews/DeleteReview/index";
 import OpenModalMenuItem from "../../../Navigation/OpenModalMenuItem";
 import { useEffect, useRef, useState } from "react";
-
+import './SpotReview.css'
 const SpotReview = ({ spot, newReviewList, userReview, userId }) => {
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
@@ -42,9 +42,9 @@ const SpotReview = ({ spot, newReviewList, userReview, userId }) => {
       <ul>
         {sortedReviews.map((review) => (
           <li key={review.id}>
-            <div>{review.User?.firstName}</div>
+            <div className="name-section">{review.User?.firstName}</div>
             <div className="date">{getFormattedDate(review.createdAt)}</div>
-            <div>{review.review}</div>
+            <div className="review-description">{review.review}</div>
 
             {userReview && userId && review.userId === userId && (
               <div className="modal">
