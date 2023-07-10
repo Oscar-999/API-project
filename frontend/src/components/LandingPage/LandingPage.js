@@ -5,17 +5,12 @@ import { thunkAllSpots } from "../../store/spots";
 import { Link } from "react-router-dom";
 import "./LandingPage.css";
 
-//dispatch to fetch data and put it in the store
-//useSelector grabs data fromthe store and give component access to data
+
 
 const LandingPage = () => {
-  //convert spots obj to list
-  //normalize spot data
   const dispatch = useDispatch();
   const spotObj = useSelector((state) => state.spots.allSpots);
   const spotList = Object.values(spotObj);
-
-  //useEffect to trigger dipatch of thunk
   useEffect(() => {
     dispatch(thunkAllSpots());
   }, [dispatch]);
@@ -24,7 +19,6 @@ const LandingPage = () => {
     return null;
   }
 
-  //show data on page through return jsx, map through list of spot
   return (
     <main>
       <ul>
