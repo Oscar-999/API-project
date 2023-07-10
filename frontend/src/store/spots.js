@@ -1,9 +1,12 @@
 import { csrfFetch } from "./csrf";
+/************************************************************************************ */
+
 export const GET_ALL_SPOTS = "spots/getAllSpots";
 export const GET_SPOT = "spots/getSpot";
 export const CREATE_SPOT = "spots/createSpot";
 export const UPDATE_SPOT = "spots/updateSpot";
 export const DELETE_SPOT = "spots/deleteSpot";
+/************************************************************************************ */
 
 //action creator
 export const getSpots = (spots) => ({
@@ -30,8 +33,8 @@ export const removeSpot = (spot) => ({
   type: DELETE_SPOT,
   spot,
 });
-
-//thunk action creator
+/************************************************************************************ */
+//Thunks
 export const thunkAllSpots = () => async (dispatch) => {
   const response = await csrfFetch("/api/spots");
 
@@ -112,10 +115,12 @@ export const thunkDeleteSpot = (spot) => async (dispatch) => {
     return errors;
   }
 };
+/************************************************************************************ */
 
 const initialState = { allSpots: {}, singleSpot: {} };
 
-//reducer: case in the reducer for all spots
+/************************************************************************************ */
+//Reducer
 const spotReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {

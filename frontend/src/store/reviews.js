@@ -1,9 +1,12 @@
 import { csrfFetch } from "./csrf";
+/************************************************************************************ */
+
 const GET_REVIEW = "reviews/getReview";
 const GET_USER_REVIEW = "reviews/userReview";
 const POST_REVIEW = "reviews/postReview";
 const UPDATE_REVIEW = "reviews/updateReview";
 const DELETE_REVIEW = "reviews/deleteReview";
+/************************************************************************************ */
 
 export const getAllReviews = (reviews) => ({
   type: GET_REVIEW,
@@ -29,6 +32,7 @@ export const deleteReview = (review) => ({
   type: DELETE_REVIEW,
   review,
 });
+/************************************************************************************ */
 
 export const thunkAllReviews = (spotId) => async (dispatch) => {
   const res = await fetch(`/api/spots/${spotId}/reviews`);
@@ -93,8 +97,9 @@ export const deleteReviewThunk = (review) => async (dispatch) => {
     return errors;
   }
 };
-
+/************************************************************************************ */
 const initialState = { spot: {}, user: {} };
+/************************************************************************************ */
 
 const reviewReducer = (state = initialState, action) => {
   let newState;
