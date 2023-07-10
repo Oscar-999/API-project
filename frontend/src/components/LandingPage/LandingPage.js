@@ -35,14 +35,14 @@ const LandingPage = () => {
                       {spot.city}, {spot.state}
                     </li>
                     {spot.avgRating === 0 ? (
-                      <li>★ New</li>
+                      <li className="star-avg">★ New</li>
                     ) : (
                       typeof spot.avgRating === "number" && (
-                        <li>★ {spot.avgRating.toFixed(1)}</li>
+                        <li className="star-avg">★ {spot.avgRating.toFixed(1)}</li>
                       )
                     )}
                   </div>
-                  <li>${spot.price} night</li>
+                  <li className="price">${spot.price} night</li>
                 </div>
               </Link>
             </div>

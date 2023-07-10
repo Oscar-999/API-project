@@ -18,8 +18,13 @@ a:hover {
   align-items: center;
 }
 
+.Create {
+   color: #00525e;
+   font-weight: bolder;
+}
 .top a {
-  color: rgb(12, 100, 83);
+  color: #00525e;
+  font-weight: bolder;
 }
 
 .nav-wrap {
@@ -52,4 +57,7 @@ a:hover {
   background-color: whitesmoke;
   top: 70px;
   right: 40px;
+}
+.Logout {
+    align-items: center;
 }

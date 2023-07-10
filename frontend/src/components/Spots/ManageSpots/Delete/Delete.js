@@ -4,11 +4,11 @@ import { useModal } from "../../../../context/Modal";
 import { thunkDeleteSpot } from "../../../../store/spots";
 import "./Delete.css";
 
-const Delete =({ spot }) => {
+const Delete = ({ spot }) => {
   const dispatch = useDispatch();
   const { closeModal } = useModal();
 
-  const handleSubmit = (e) => {
+  const submitHandler = (e) => {
     e.preventDefault();
     return dispatch(thunkDeleteSpot(spot)).then(closeModal);
   };
@@ -18,7 +18,7 @@ const Delete =({ spot }) => {
       <div className="delete">
         <h1>Confirm Delete</h1>
         <h4>Are you sure you want to remove this spot from the listings?</h4>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={submitHandler}>
           <div className="red">
             <button type="submit">Yes(Delete Spot)</button>
           </div>
@@ -29,6 +29,6 @@ const Delete =({ spot }) => {
       </div>
     </>
   );
-}
+};
 
 export default Delete;

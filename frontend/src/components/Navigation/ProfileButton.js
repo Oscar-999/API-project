@@ -54,11 +54,15 @@ function ProfileButton({ user }) {
             <li>Hello, {user.firstName}</li>
             {/* <li>{user.username}</li> */}
             <li>{user.email}</li>
+            <div style={{ borderTop: "2px solid #000000", marginTop: 10,marginBottom: 3, marginLeft: 6, marginRight: 6 }}></div>
+
             <li>
               <NavLink exact to="/spots/current">
                 Manage Spots
+
               </NavLink>
             </li>
+              <div style={{ borderTop: "2px solid #000000", marginTop: 10,marginBottom: 3, marginLeft: 6, marginRight: 6 }}></div>
             <li>
               <NavLink exact to="/reviews/current">
                 Manage Reviews
@@ -66,7 +70,7 @@ function ProfileButton({ user }) {
             </li>
 
             <li>
-              <button onClick={logout}>Log Out</button>
+              <button className="Logout" onClick={logout}>Log Out</button>
             </li>
           </>
         ) : (

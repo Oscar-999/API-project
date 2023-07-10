@@ -14,7 +14,7 @@ const EditReviewForm = ({ review, spot }) => {
   const user = useSelector((state) => state.session.user);
   const { closeModal } = useModal();
 
-  const handleSubmit = async (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
     const reviewObj = {
       ...review,
@@ -62,7 +62,7 @@ const EditReviewForm = ({ review, spot }) => {
     <>
       <div className="post-review">
         <h1>How was your stay at {spot.name}?</h1>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={submitHandler}>
           <div className="errors">{errors.text}</div>
           <textarea value={text} onChange={(e) => setText(e.target.value)} />
           <div className="errors">{errors.stars}</div>
