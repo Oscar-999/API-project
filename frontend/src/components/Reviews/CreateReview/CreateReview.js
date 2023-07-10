@@ -16,7 +16,7 @@ const CreateReview = ({ spot }) => {
   const user = useSelector((state) => state.session.user);
   const { closeModal } = useModal();
 
-  const handleSubmit = async (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
     const review = {
       spotId: spot.id,
@@ -64,7 +64,7 @@ const CreateReview = ({ spot }) => {
     <>
       <div className="post-review">
         <h1>How was your stay?</h1>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={submitHandler}>
           <div className="errors">{errors.text}</div>
           <textarea
             value={text}

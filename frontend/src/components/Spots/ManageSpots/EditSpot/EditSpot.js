@@ -39,7 +39,7 @@ const EditSpot = () => {
     }
   }, [spot]);
 
-  const handleSubmit = async (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
     const spotObj = {
       ...spot,
@@ -99,7 +99,7 @@ const EditSpot = () => {
       Object.keys(spot).length > 1 && (
         <>
           <div className="spot-form">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={submitHandler}>
               <div className="location">
                 <h2>Update Spot</h2>
                 <h3>Where's your place located?</h3>
@@ -203,7 +203,7 @@ const EditSpot = () => {
                   </label>
                 </div>
               </div>
-              <div className="descript">
+              <div className="describe">
                 <h3>Describe your place to guests</h3>
                 <h6>
                   Mention the best features of your space, any special

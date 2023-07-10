@@ -27,7 +27,7 @@ function Navigation({ isLoaded }) {
               <ul>
                 <div className="top">
                   <div className="new">
-                    <NavLink exact to="/spots/new">
+                    <NavLink className='Create' exact to="/spots/new">
                       Create a New Spot
                     </NavLink>
                   </div>

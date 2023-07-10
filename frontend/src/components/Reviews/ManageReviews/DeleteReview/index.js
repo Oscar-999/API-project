@@ -8,7 +8,7 @@ function DeleteReview({ review, spot }) {
   const dispatch = useDispatch();
   const { closeModal } = useModal();
 
-  const handleSubmit = async (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
     const deleted = await dispatch(deleteReviewThunk(review));
     if (deleted.id === review.id) {
@@ -23,7 +23,7 @@ function DeleteReview({ review, spot }) {
       <div className="delete">
         <h1>Confirm Delete</h1>
         <h4>Are you sure you want to delete this review?</h4>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={submitHandler}>
           <div className="red">
             <button type="submit">Yes(Delete Review)</button>
           </div>

@@ -11,7 +11,7 @@ function LoginFormModal() {
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
 
-  const handleSubmit = (e) => {
+  const submitHandler = (e) => {
     e.preventDefault();
     setErrors({});
     return dispatch(sessionActions.login({ credential, password }))
@@ -40,7 +40,7 @@ function LoginFormModal() {
 
   return (
     <div className="loggin">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={submitHandler}>
         <h1>Log In</h1>
         <label>
           Username or email
