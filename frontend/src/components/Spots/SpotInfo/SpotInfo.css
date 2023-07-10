@@ -1,6 +1,6 @@
 .info {
     font-size: 16px;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 }
 
 img {
@@ -78,7 +78,7 @@ img {
     grid-template-columns: 1fr 1fr;
     row-gap: .5rem;
     column-gap: .5rem;
-    width:670px
+    width:770px
 }
 
 .img2 img {
