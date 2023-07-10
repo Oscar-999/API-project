@@ -23,7 +23,8 @@ a:hover {
    font-weight: bolder;
 }
 .top a {
-  color: rgb(12, 100, 83);
+  color: #00525e;
+  font-weight: bolder;
 }
 
 .nav-wrap {
