@@ -17,6 +17,7 @@ const DeleteReview = ({ review, spot }) => {
     }
   };
   return (
+    //commit
     <>
       <div className="delete">
         <h1>Confirm Delete</h1>
