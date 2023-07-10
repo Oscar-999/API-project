@@ -39,7 +39,7 @@ function LoginFormModal() {
   };
 
   return (
-    <div className="loggin">
+    <div className="loging-wrapper">
       <form onSubmit={submitHandler}>
         <h1>Log In</h1>
         <label>

@@ -12,14 +12,14 @@ ul button{
 }
 .manage button{
     margin-top: 1rem;
-    background-color: gray;
+    background-color: #666666;
     color:white;
     height:30px;
     width:150px;
     margin-left: 3rem
 }
 .buttons button{
-    background-color: gray;
+    background-color: #666666;
     color: white;
 }
 
