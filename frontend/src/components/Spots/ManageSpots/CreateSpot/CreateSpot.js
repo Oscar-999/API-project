@@ -355,7 +355,7 @@ const CreateSpot = () => {
             <div className="errors">{errors.img4}</div>
           </div>
         </div>
-        <button type="submit">Create Spot</button>
+        <button className="Creates-spot" type="submit">Create Spot</button>
       </form>
     </div>
   );
