@@ -55,7 +55,7 @@ function SignupFormModal() {
   }
 
   return (
-    <div className="loggin">
+    <div className="loging-wrapper">
       <form onSubmit={submitHandler}>
         <h1>Sign Up</h1>
         <label>
