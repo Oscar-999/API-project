@@ -166,7 +166,7 @@ const SpotInfo = () => {
     const closeMenu = () => setShowMenu(false);
 
     const reserve = () => {
-        window.alert('Feature Coming Soon...')
+        window.alert('Feature coming soon...')
     }
 
     if (!spot) {

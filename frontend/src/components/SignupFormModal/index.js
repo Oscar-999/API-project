@@ -42,7 +42,7 @@ function SignupFormModal() {
     };
 
     let isDisabled = true;
-    if (username.length > 4 && password.length > 6 && email && firstName && lastName && confirmPassword) {
+    if (username.length >= 4 && password.length >= 6 && email && firstName && lastName && confirmPassword) {
         isDisabled = false
     }
 

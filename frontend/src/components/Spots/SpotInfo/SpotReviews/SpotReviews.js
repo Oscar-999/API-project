@@ -32,10 +32,15 @@ const SpotReview = ({ spot, newReviewList, userReview, userId }) => {
     return date.toLocaleDateString(undefined, options);
   };
 
+
+  const sortedReviews = newReviewList.sort((a, b) => {
+    return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+  });
+
   return (
     <>
       <ul>
-        {newReviewList.map((review) => (
+        {sortedReviews.map((review) => (
           <li key={review.id}>
             <div>{review.User?.firstName}</div>
             <div className="date">{getFormattedDate(review.createdAt)}</div>

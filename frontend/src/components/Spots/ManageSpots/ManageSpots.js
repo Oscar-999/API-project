@@ -65,7 +65,7 @@ const ManageSpots = () => {
                     <li>
                       {spot.city}, {spot.state}
                     </li>
-                    <li>★ {spot.avgRating}</li>
+                    <li>★ {spot.avgRating !== 0 ? spot.avgRating.toString() : "New"}</li>
                   </div>
                   <li>${spot.price} night</li>
                 </div>
