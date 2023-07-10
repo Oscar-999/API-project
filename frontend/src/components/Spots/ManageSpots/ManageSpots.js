@@ -65,13 +65,13 @@ const ManageSpots = () => {
                     <li>
                       {spot.city}, {spot.state}
                     </li>
-                    <li>★ {spot.avgRating !== 0 ? spot.avgRating.toString() : "New"}</li>
+                    <li className="star-avg">★ {spot.avgRating !== 0 ? spot.avgRating.toString() : "New"}</li>
                   </div>
-                  <li>${spot.price} night</li>
+                  <li  className="price">${spot.price} night</li>
                 </div>
               </Link>
               <div className="buttons">
-                <button onClick={() => history.push(`/spots/${spot.id}/edit`)}>
+                <button className="update-bttn" onClick={() => history.push(`/spots/${spot.id}/edit`)}>
                   Update
                 </button>
                 <OpenModalMenuItem
