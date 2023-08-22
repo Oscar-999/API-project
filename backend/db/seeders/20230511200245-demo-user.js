@@ -42,7 +42,7 @@ module.exports = {
       }
     ], {});
   },
-  // 'RigbyMordecai', 'Ironman', 'Gumball', 'Demo-lition', 'Batman'
+ 
   async down (queryInterface, Sequelize) {
 
     options.tableName = 'Users';
