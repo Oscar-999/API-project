@@ -11,6 +11,7 @@ import ManageReviews from "./components/Reviews/ManageReviews/EditReview";
 import CreateSpot from "./components/Spots/ManageSpots/CreateSpot/CreateSpot";
 import LandingPage from "./components/LandingPage/LandingPage";
 import SpotInfo from "./components/Spots/SpotInfo/SpotInfo";
+import ManageBooking from "./components/Bookings/Manager/ManageBooking";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ function App() {
           <Route exact path={"/spots/:spotId"} component={SpotInfo}/>
           <Route exact path={"/reviews/current"}component={ManageReviews}/>
           <Route exact path={"/spots/:spotId/edit"} component={EditSpot}/>
+          <Route exact path={"/bookings/current"} component={ManageBooking}/>
           <Route exact path={"/bookings/:spotId"} component={CreateBooking}/>
         </Switch>
       )}
