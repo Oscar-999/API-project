@@ -4,7 +4,7 @@ import { Switch } from "react-router-dom";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation/Navigation";
 import { Route } from "react-router-dom";
-
+import CreateBooking from "./components/Bookings/Create/CreateBooking";
 import ManageSpots from "./components/Spots/ManageSpots/ManageSpots";
 import EditSpot from "./components/Spots/ManageSpots/EditSpot/EditSpot";
 import ManageReviews from "./components/Reviews/ManageReviews/EditReview";
@@ -30,6 +30,7 @@ function App() {
           <Route exact path={"/spots/:spotId"} component={SpotInfo}/>
           <Route exact path={"/reviews/current"}component={ManageReviews}/>
           <Route exact path={"/spots/:spotId/edit"} component={EditSpot}/>
+          <Route exact path={"/bookings/:spotId"} component={CreateBooking}/>
         </Switch>
       )}
     </>

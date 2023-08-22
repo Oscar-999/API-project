@@ -69,7 +69,17 @@ function ProfileButton({ user }) {
               </NavLink>
             </li>
 
+
+            <div style={{ borderTop: "2px solid #000000", marginTop: 10,marginBottom: 3, marginLeft: 6, marginRight: 6 }}></div>
             <li>
+            <li>
+              <NavLink exact to="/bookings/current">
+                Manage Bookings
+              </NavLink>
+            </li>
+            </li>
+            <li>
+
               <button className="Logout" onClick={logout}>Log Out</button>
             </li>
           </>
