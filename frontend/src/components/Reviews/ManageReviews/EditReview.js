@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { thunkUserReviews } from "../../../store/reviews";
 import OpenModalMenuItem from "../../Navigation/OpenModalMenuItem";
 import DeleteReview from "./DeleteReview";
-import UpdateReviewForm from "./EditReview";
+import UpdateReviewForm from "./EditReview/index";
 import "./ManageReviews.css";
 
 export default function ManageReviews() {

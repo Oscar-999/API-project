@@ -4,7 +4,7 @@ import { thunkUserReviews, thunkUpdateReview } from "../../../../store/reviews";
 import { useModal } from "../../../../context/Modal";
 import { useSelector } from "react-redux";
 
-const EditReviewForm = ({ review, spot }) => {
+const UpdateReviewForm = ({ review, spot }) => {
   const dispatch = useDispatch();
   const [text, setText] = useState(review?.review);
   const [stars, setStars] = useState(review?.stars);
@@ -119,4 +119,4 @@ const EditReviewForm = ({ review, spot }) => {
   );
 };
 
-export default EditReviewForm;
+export default UpdateReviewForm;
