@@ -4,12 +4,13 @@ import { useParams } from "react-router-dom";
 import { thunkOneSpot } from "../../../../store/spots";
 import { createBookingThunk, getAllUsersBookingsThunk } from "../../../../store/booking";
 import { useHistory } from "react-router-dom";
-import "./CreateBooking.css"
+import "./CreateBooking.css";
 
 export default function CreateBooking() {
     const { spotId } = useParams();
-    const history = useHistory()
+    const history = useHistory();
     const spot = useSelector(state => state.spots.singleSpot);
+    const userId = useSelector(state => state.session.user?.id);
     const dispatch = useDispatch();
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
@@ -56,42 +57,50 @@ export default function CreateBooking() {
         }
     };
 
+    const isUserOwner = spot && userId === spot.ownerId;
+
     return (
-        <>
-            <div>
-                <h1>Book your spot</h1>
-                <div>
-                    <div className="book-spot-form">
-                        <h2>Your trip</h2>
-
-                        <form onSubmit={handleSubmit}>
-                            <label htmlFor="start-date">Start date</label>
-                            <input
-                                id="start-date"
-                                type="date"
-                                value={startDate}
-                                onChange={e => setStartDate(e.target.value)}
-                            />
-                            {errors.startDate && <div className="errors">{errors.startDate}</div>}
-
-                            <label htmlFor="end-date">End date</label>
-                            <input
-                                id="end-date"
-                                type="date"
-                                value={endDate}
-                                onChange={e => setEndDate(e.target.value)}
-                            />
-                            {errors.endDate && <div className="errors">{errors.endDate}</div>}
-
-                            <button type="submit" className="submit-button">
-                                Submit
-                            </button>
-
-                        </form>
-
+        <div className="create-booking-container">
+            <div className="create-booking-form">
+                <form onSubmit={handleSubmit}>
+                    <div className="form-field">
+                        <label htmlFor="start-date">Check-in</label>
+                        <input
+                            id="start-date"
+                            type="date"
+                            value={startDate}
+                            onChange={e => setStartDate(e.target.value)}
+                        />
+                        {errors.startDate && <div className="error-message">{errors.startDate}</div>}
                     </div>
-                </div>
+
+                    <div className="form-field">
+                        <label htmlFor="end-date">Check-out</label>
+                        <input
+                            id="end-date"
+                            type="date"
+                            value={endDate}
+                            onChange={e => setEndDate(e.target.value)}
+                        />
+                        {errors.endDate && <div className="error-message">{errors.endDate}</div>}
+                    </div>
+
+                    {!isUserOwner ? (
+                        <button
+                            type="submit"
+                            className="reserve-button"
+                            disabled={!userId}
+                        >
+                            Reserve
+                        </button>
+                    ) : (
+                        <p className="cant-reserve-message">Can't reserve your own spot</p>
+                    )}
+
+
+                    <p id="no-charge">You won't be charged yet</p>
+                </form>
             </div>
-        </>
+        </div>
     );
 }

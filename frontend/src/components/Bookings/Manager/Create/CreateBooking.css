@@ -1,59 +1,64 @@
-/* .book-spot-container {
-    background-color: #f2f2f2;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+.create-booking-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 100vh; /
 }
 
-.book-spot-container h1 {
-    color: #6a0dad;
-    font-weight: 600;
-}
-
-.book-spot-form {
-    background-color: #ffffff;
+.create-booking-form {
+    width: 350px;
     padding: 20px;
+    / border: 1px solid #ddd; /
     border-radius: 8px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
+    / box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1); */
 }
 
-.book-spot-form h2 {
-    color: #6a0dad;
-    font-weight: 500;
-    margin-bottom: 10px;
+.form-field {
+    margin-bottom: 15px;
 }
 
-.book-spot-form label {
-    color: #6a0dad;
-    display: block;
+.form-field label {
+    font-size: 14px;
+    font-weight: 600;
     margin-bottom: 5px;
+    display: block;
 }
 
-.book-spot-form input[type="date"] {
+.form-field input {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    margin-bottom: 10px;
 }
 
-.submit-button {
-    background-color: #6a0dad;
-    color: #ffffff;
-    padding: 10px 15px;
+.error-message {
+    color: #e74c3c;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.reserve-button {
+    background-color: #ff5a5f;
+    color: white;
     border: none;
     border-radius: 4px;
+    padding: 10px 15px;
     cursor: pointer;
+    width: 300px;
+    height: 40px;
+    transition: background-color 0.3s ease;
 }
 
-.submit-button:hover {
-    background-color: #531091;
+.reserve-button:hover {
+    background-color: #ff4247;
 }
 
-.container {
+#no-charge {
     display: flex;
-    justify-content: center;
     align-items: center;
-    height: 100vh;
-} */
+    margin-left: 20%;
+}
+
+.cant-reserve-message {
+    margin-left: 15%;
+}
