@@ -9,6 +9,10 @@ import SpotReview from "./SpotReviews/SpotReviews";
 import CreateReview from "../../Reviews/CreateReview/CreateReview";
 import OpenModalMenuItem from "../../Navigation/OpenModalMenuItem";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import PlaceOffers from "../SpotInfo/PlaceOffers/PlaceOffers";
+import CreateBooking from "../../Bookings/Manager/Create/CreateBooking";
+import ThingsToKnow from "./ThingsToKnow/ThingsToKnow";
+import HostedBy from "./HostedBy/HostedBy";
 
 const SpotInfo = () => {
     const dispatch = useDispatch();
@@ -90,22 +94,38 @@ const SpotInfo = () => {
                                 <div className='reserve-wrap'>
                                     <div className='host'>
                                         <h2>Hosted by {spot.Owner.firstName} {spot.Owner.lastName}</h2>
+
+                                        <h3 style={{ fontWeight: 'bold' }}><i class="fa-solid fa-door-open"></i> Self check-in</h3>
+                                        <p>Check yourself in with the keypad.
+                                        </p>
+                                        <h3 style={{ fontWeight: 'bold' }}><i class="fa-solid fa-trophy"></i> Great Superhost</h3>
+                                        <p>Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests.</p>
+                                        <h3 style={{ fontWeight: 'bold' }}><i class="fa-solid fa-calendar"></i> Free Cancellation</h3>
+
+
                                         <div>{spot.description}</div>
+                                        <PlaceOffers />
+
                                     </div>
                                 </div>
                                 <div className="review">
+
                                     <div className='reserve'>
                                         <div className='money'>
                                             <div>$ {spot.price} night</div>
                                             <div>★ New</div>
                                         </div>
-                                        <button onClick={reserve}>Reserve</button>
+                                        <CreateBooking />
                                     </div>
                                 </div>
                             </div>
                             <h1>★ New</h1>
                         </div>
+                        <HostedBy spot={spot} userId={userId} />
+                        <ThingsToKnow />
+
                     </div>
+
                 </section>
             )
         }
@@ -123,7 +143,16 @@ const SpotInfo = () => {
                                 <div className='reserve-wrap'>
                                     <div className='host'>
                                         <h2>Hosted by {spot.Owner.firstName} {spot.Owner.lastName}</h2>
+                                        <h3 style={{ fontWeight: 'bold' }}><i class="fa-solid fa-door-open"></i> Self check-in</h3>
+                                        <p>Check yourself in with the keypad.
+                                        </p>
+                                        <h3 style={{ fontWeight: 'bold' }}><i class="fa-solid fa-trophy"></i> Great Superhost</h3>
+                                        <p>Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests.</p>
+                                        <h3 style={{ fontWeight: 'bold' }}><i class="fa-solid fa-calendar"></i> Free Cancellation</h3>
+
                                         <div>{spot.description}</div>
+                                        <PlaceOffers />
+
                                     </div>
                                 </div>
                                 <div className="review">
@@ -137,7 +166,8 @@ const SpotInfo = () => {
                                                 <div>★ {spot.avgStarRating.toFixed(1)} · {newReviewList.length} reviews</div>
                                             }
                                         </div>
-                                        <button onClick={reserve}>Reserve</button>
+                                        <CreateBooking />
+
                                     </div>
                                 </div>
 
@@ -154,6 +184,10 @@ const SpotInfo = () => {
                                 userReview={userReview}
                             />
                         </div>
+                        <HostedBy spot={spot} userId={userId} />
+
+                        <ThingsToKnow />
+
                     </div>
                 </section>
             )
@@ -175,7 +209,16 @@ const SpotInfo = () => {
                                 <div className='reserve-wrap'>
                                     <div className='host'>
                                         <h2>Hosted by {spot.Owner.firstName} {spot.Owner.lastName}</h2>
+                                        <h3 style={{ fontWeight: 'bold' }}><i class="fa-solid fa-door-open"></i> Self check-in</h3>
+                                        <p>Check yourself in with the keypad.
+                                        </p>
+                                        <h3 style={{ fontWeight: 'bold' }}><i class="fa-solid fa-trophy"></i> Great Superhost</h3>
+                                        <p>Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests.</p>
+                                        <h3 style={{ fontWeight: 'bold' }}><i class="fa-solid fa-calendar"></i> Free Cancellation</h3>
+
                                         <div>{spot.description}</div>
+                                        <PlaceOffers />
+
                                     </div>
                                 </div>
                                 <div className="review">
@@ -184,7 +227,8 @@ const SpotInfo = () => {
                                             <div>$ {spot.price} night</div>
                                             <div>★ New</div>
                                         </div>
-                                        <button onClick={reserve}>Reserve</button>
+                                        <CreateBooking />
+
                                     </div>
                                 </div>
                             </div>
@@ -203,6 +247,10 @@ const SpotInfo = () => {
                                 <h4>Be the first to post a review!</h4>
                             </div>
                         </div>
+                        <HostedBy spot={spot} userId={userId} />
+
+                        <ThingsToKnow />
+
                     </div>
                 </section>
             )
@@ -221,7 +269,16 @@ const SpotInfo = () => {
                                 <div className='reserve-wrap'>
                                     <div className='host'>
                                         <h2>Hosted by {spot.Owner.firstName} {spot.Owner.lastName}</h2>
+                                        <h3 style={{ fontWeight: 'bold' }}><i class="fa-solid fa-door-open"></i> Self check-in</h3>
+                                        <p>Check yourself in with the keypad.
+                                        </p>
+                                        <h3 style={{ fontWeight: 'bold' }}><i class="fa-solid fa-trophy"></i> Great Superhost</h3>
+                                        <p>Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests.</p>
+                                        <h3 style={{ fontWeight: 'bold' }}><i class="fa-solid fa-calendar"></i> Free Cancellation</h3>
+
                                         <div>{spot.description}</div>
+                                        <PlaceOffers />
+
                                     </div>
                                 </div>
                                 <div className="review">
@@ -235,7 +292,7 @@ const SpotInfo = () => {
                                                 <div>★ {spot.avgStarRating.toFixed(1)} · {newReviewList.length} reviews</div>
                                             }
                                         </div>
-                                        <button onClick={reserve}>Reserve</button>
+                                        <CreateBooking />
                                     </div>
 
                                 </div>
@@ -263,6 +320,10 @@ const SpotInfo = () => {
                             newReviewList={newReviewList}
                             userReview={userReview}
                         />
+          <HostedBy spot={spot} userId={userId} />
+
+                        <ThingsToKnow />
+
                     </div>
                 </section>
             )
@@ -281,10 +342,20 @@ const SpotInfo = () => {
                                 <div className='reserve-wrap'>
                                     <div className='host'>
                                         <h2>Hosted by {spot.Owner.firstName} {spot.Owner.lastName}</h2>
+                                        <h3 style={{ fontWeight: 'bold' }}><i class="fa-solid fa-door-open"></i> Self check-in</h3>
+                                        <p>Check yourself in with the keypad.
+                                        </p>
+                                        <h3 style={{ fontWeight: 'bold' }}><i class="fa-solid fa-trophy"></i> Great Superhost</h3>
+                                        <p>Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests.</p>
+                                        <h3 style={{ fontWeight: 'bold' }}><i class="fa-solid fa-calendar"></i> Free Cancellation</h3>
+
                                         <div>{spot.description}</div>
+                                        <PlaceOffers />
+
                                     </div>
                                 </div>
                                 <div className="review">
+
                                     <div className='reserve'>
                                         <div className='money'>
                                             <div>$ {spot.price} night</div>
@@ -295,7 +366,7 @@ const SpotInfo = () => {
                                                 <div>★ {spot.avgStarRating.toFixed(1)} · {newReviewList.length} reviews</div>
                                             }
                                         </div>
-                                        <button onClick={reserve}>Reserve</button>
+                                        <CreateBooking />
                                     </div>
                                 </div>
 
@@ -324,6 +395,10 @@ const SpotInfo = () => {
                             newReviewList={newReviewList}
                             userReview={userReview}
                         />
+          <HostedBy spot={spot} userId={userId} />
+
+                        <ThingsToKnow />
+
                     </div>
                 </section>
             )
@@ -343,10 +418,20 @@ const SpotInfo = () => {
                                 <div className='reserve-wrap'>
                                     <div className='host'>
                                         <h2>Hosted by {spot.Owner.firstName} {spot.Owner.lastName}</h2>
+                                        <h3 style={{ fontWeight: 'bold' }}><i class="fa-solid fa-door-open"></i> Self check-in</h3>
+                                        <p>Check yourself in with the keypad.
+                                        </p>
+                                        <h3 style={{ fontWeight: 'bold' }}><i class="fa-solid fa-trophy"></i> Great Superhost</h3>
+                                        <p>Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests.</p>
+                                        <h3 style={{ fontWeight: 'bold' }}><i class="fa-solid fa-calendar"></i> Free Cancellation</h3>
+
                                         <div>{spot.description}</div>
+                                        <PlaceOffers />
+
                                     </div>
                                 </div>
                                 <div className="review">
+
                                     <div className='reserve'>
                                         <div className='money'>
                                             <div>$ {spot.price} night</div>
@@ -360,7 +445,8 @@ const SpotInfo = () => {
                                                 <div>★ {spot.avgStarRating.toFixed(1)} · {newReviewList.length} reviews</div>
                                             }
                                         </div>
-                                        <button onClick={reserve}>Reserve</button>
+                                        <CreateBooking />
+
                                     </div>
                                 </div>
                             </div>
@@ -377,6 +463,10 @@ const SpotInfo = () => {
                                 userId={userId}
                             />
                         </div>
+                        <HostedBy spot={spot} userId={userId} />
+
+                        <ThingsToKnow />
+
                     </div>
                 </section>
             )
@@ -396,10 +486,20 @@ const SpotInfo = () => {
                             <div className='reserve-wrap'>
                                 <div className='host'>
                                     <h2>Hosted by {spot.Owner.firstName} {spot.Owner.lastName}</h2>
+                                    <h3 style={{ fontWeight: 'bold' }}>Self check-in</h3>
+                                    <p>Check yourself in with the keypad.
+                                    </p>
+                                    <h3 style={{ fontWeight: 'bold' }}><i class="fa-solid fa-trophy"></i> Great Superhost</h3>
+                                    <p>Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests.</p>
+                                    <h3 style={{ fontWeight: 'bold' }}>Free Cancellation</h3>
+
                                     <div>{spot.description}</div>
+                                    <PlaceOffers />
+
                                 </div>
                             </div>
                             <div className="review">
+
                                 <div className='reserve'>
                                     <div className='money'>
                                         <div>$ {spot.price} night</div>
@@ -413,7 +513,7 @@ const SpotInfo = () => {
                                             <div>★ {spot.avgStarRating.toFixed(1)} · {newReviewList.length} reviews</div>
                                         }
                                     </div>
-                                    <button onClick={reserve}>Reserve</button>
+                                    <CreateBooking />
                                 </div>
                             </div>
                         </div>
@@ -435,6 +535,10 @@ const SpotInfo = () => {
                             />
                         }
                     </div>
+                    <HostedBy spot={spot} userId={userId} />
+
+                    <ThingsToKnow />
+
                 </div>
             </section>
         )
