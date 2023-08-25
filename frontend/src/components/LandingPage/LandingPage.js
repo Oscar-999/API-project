@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { thunkAllSpots } from "../../store/spots";
 import { Link } from "react-router-dom";
 import "./LandingPage.css";
+import Footer from "./LandingPageFooter/LandingPageFooter";
 
 const LandingPage = () => {
   const dispatch = useDispatch();
@@ -46,6 +47,7 @@ const LandingPage = () => {
             </div>
           ))}
       </ul>
+      <Footer />
     </main>
   );
 };
