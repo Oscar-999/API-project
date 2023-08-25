@@ -13,6 +13,7 @@ import PlaceOffers from "../SpotInfo/PlaceOffers/PlaceOffers";
 import CreateBooking from "../../Bookings/Manager/Create/CreateBooking";
 import ThingsToKnow from "./ThingsToKnow/ThingsToKnow";
 import HostedBy from "./HostedBy/HostedBy";
+import SpotInfoFooter from "./Footer/SpotInfoFooter";
 
 const SpotInfo = () => {
     const dispatch = useDispatch();
@@ -123,7 +124,7 @@ const SpotInfo = () => {
                         </div>
                         <HostedBy spot={spot} userId={userId} />
                         <ThingsToKnow />
-
+<SpotInfoFooter />
                     </div>
 
                 </section>
@@ -189,6 +190,8 @@ const SpotInfo = () => {
                         <ThingsToKnow />
 
                     </div>
+                    <SpotInfoFooter />
+
                 </section>
             )
         }
@@ -252,6 +255,8 @@ const SpotInfo = () => {
                         <ThingsToKnow />
 
                     </div>
+                    <SpotInfoFooter />
+
                 </section>
             )
         }
@@ -325,6 +330,8 @@ const SpotInfo = () => {
                         <ThingsToKnow />
 
                     </div>
+                    <SpotInfoFooter />
+
                 </section>
             )
         }
@@ -400,6 +407,8 @@ const SpotInfo = () => {
                         <ThingsToKnow />
 
                     </div>
+                    <SpotInfoFooter />
+
                 </section>
             )
 
@@ -468,6 +477,8 @@ const SpotInfo = () => {
                         <ThingsToKnow />
 
                     </div>
+                    <SpotInfoFooter />
+
                 </section>
             )
         }
@@ -540,6 +551,8 @@ const SpotInfo = () => {
                     <ThingsToKnow />
 
                 </div>
+                <SpotInfoFooter />
+
             </section>
         )
     }
