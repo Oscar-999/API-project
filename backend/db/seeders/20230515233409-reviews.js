@@ -60,6 +60,58 @@ module.exports = {
       review: 'Happiness lies',
       stars: 1
     },
+
+    //7
+    {
+      spotId: 7,
+      userId: 8,
+      review: 'I like this place very much',
+      stars: 5
+    },
+    {
+      spotId: 7,
+      userId: 9,
+      review: 'Money💵 Money💵 Money💵 Money💵 Money💵 Money💵 Money💵 Money💵',
+      stars: 5
+    },
+    {
+      spotId: 7,
+      userId: 10,
+      review: "🎈I love my friend Spongebob's house",
+      stars: 5
+    },
+    //8
+    {
+      spotId: 8,
+      userId: 12,
+      review: "You have no idea what it's like, being married to you.",
+      stars: 5
+    },
+    {
+      spotId: 8,
+      userId: 13,
+      review: "BART!",
+      stars: 1
+    },
+    {
+      spotId: 8,
+      userId: 14,
+      review: "If anyone wants me, I'll be in my room.",
+      stars: 2
+    },
+//9
+{
+  spotId: 9,
+  userId: 25,
+  review: "Strange things happen here.",
+  stars: 2
+},
+{
+  spotId: 9,
+  userId: 26,
+  review: "Me and my twin brother stay here every summer.",
+  stars: 2
+},
    ], {})
   },
 
