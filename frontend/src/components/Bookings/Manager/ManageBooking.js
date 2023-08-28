@@ -56,7 +56,7 @@ const ManageBookings = () => {
                 <div className="manages">
                     <h1>Manage Bookings</h1>
                 </div>
-                <ul>
+                <ul className="bookings-list">
                     {bookingList.length > 0 && bookingList.map(booking => (
                         <div key={booking.id} className="review">
                             <h3>{booking.Spot?.name}</h3>
@@ -72,7 +72,9 @@ const ManageBookings = () => {
                                     modalComponent={<UpdateBookingForm
                                         booking={booking}
                                         spot={booking.Spot}
+
                                     />}
+                                    className="update-button"
                                 />
                                 <OpenModalMenuItem
                                     buttonText="Delete"
@@ -80,6 +82,7 @@ const ManageBookings = () => {
                                     modalComponent={<DeleteBooking
                                         booking={booking}
                                     />}
+                                    className="delete-button"
                                 />
                             </div>
                         </div>

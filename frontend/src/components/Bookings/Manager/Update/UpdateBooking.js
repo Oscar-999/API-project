@@ -4,6 +4,8 @@ import { useModal } from "../../../../context/Modal";
 import { useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import { updateBookingThunk } from "../../../../store/booking";
+import './UpdateBooking.css'
+
 const UpdateBookingForm = ({ spot, booking }) => {
     const history = useHistory();
     const dispatch = useDispatch();

@@ -28,7 +28,7 @@ function Navigation({ isLoaded }) {
                 <div className="top">
                   <div className="new">
                     <NavLink className='Create' exact to="/spots/new">
-                      Create a New Spot
+                      Airbnb your home
                     </NavLink>
                   </div>
                   <div className="profile">
@@ -50,11 +50,8 @@ function Navigation({ isLoaded }) {
           <div className="air">
             <li>
               <NavLink exact to="/">
-                <i
-                  class="fa-solid fa-rocket-launch"
-                  style={{ color: "#2b5aab" }}
-                >
-                  MultiverseBnb
+                <i class="fa-solid fa-atom">
+                MultiverseBnb
                 </i>{" "}
               </NavLink>
             </li>

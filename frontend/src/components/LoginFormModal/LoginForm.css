@@ -62,3 +62,14 @@ ul {
 .errors {
   color: red;
 }
+
+#or {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dividers {
+  border-bottom: solid 1px #a8a8a8;
+  width: 46%;
+}

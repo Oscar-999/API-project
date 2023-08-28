@@ -9,14 +9,10 @@ const Footer = () => {
                 <ul className="footer-links">
                     <li>&copy; {new Date().getFullYear()} OscarAlcantar, Inc.</li>
                     <li>
-                        <a href="https://github.com/Oscar-999">
-                            <i className="fab fa-github"></i>
-                        </a>
+                    <a href="https://github.com/Oscar-999"><i class="fa-brands fa-github"></i></a>
                     </li>
                     <li>
-                        <a href="https://www.linkedin.com/in/oscar-alcantar-800313204/">
-                            <i className="fab fa-linkedin"></i>
-                        </a>
+                    <a href="https://www.linkedin.com/in/oscar-alcantar-800313204/"><i class="fa-brands fa-linkedin"></i></a>
                     </li>
                     <li>Terms</li>
                     <li>Sitemap</li>

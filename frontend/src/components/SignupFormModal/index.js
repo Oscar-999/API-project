@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import * as sessionActions from "../../store/session";
-import "./SignupForm.css";
+
 
 function SignupFormModal() {
   const dispatch = useDispatch();
@@ -58,6 +58,7 @@ function SignupFormModal() {
     <div className="loging-wrapper">
       <form onSubmit={submitHandler}>
         <h1>Sign Up</h1>
+        <h2>Welcome to Airbnb</h2>
         <label>
           Email
           <input

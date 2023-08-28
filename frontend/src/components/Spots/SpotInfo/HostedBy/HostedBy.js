@@ -1,15 +1,15 @@
 import React from 'react';
 import './HostedBy.css';
 
-const HostedBy = ({ spot, userId,  }) => {
+const HostedBy = ({ spot }) => {
     return (
         <div className="hosted-by-container">
             <h2>Hosted by {spot.Owner.firstName} {spot.Owner.lastName}</h2>
             <div className="hosted-by-row">
                 <div className="hosted-by-info">
-                    <p className="hosted-by-label"> <i class="fa-solid fa-star"></i>{spot.avgStarRating} Reviews</p>
-                    <p className="hosted-by-label"> <i class="fa-solid fa-user-shield"></i>Identity verified</p>
-                    <p className="hosted-by-label"> <i class="fa-solid fa-crown"></i>Superhost</p>
+                    <p className="hosted-by-label"> <i className="fa-solid fa-star"></i>{spot.avgStarRating.toFixed(1)} Reviews</p>
+                    <p className="hosted-by-label"> <i className="fa-solid fa-user-shield"></i>Identity verified</p>
+                    <p className="hosted-by-label"> <i className="fa-solid fa-crown"></i>Superhost</p>
                 </div>
             </div>
 

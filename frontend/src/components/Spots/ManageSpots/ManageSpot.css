@@ -1,6 +1,7 @@
 ul button{
     width:75px;
-    height: 30px
+    height: 30px;
+    border-radius: 21px;
 }
 
 .manage h1{

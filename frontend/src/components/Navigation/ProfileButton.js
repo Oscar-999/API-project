@@ -45,16 +45,21 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
-      </button>
+      <div className="profiles-icon">
+        <button onClick={openMenu}>
+          <i className="fa-solid fa-bars" />
+          <i className="fas fa-user-circle" />
+        </button>
+
+      </div>
+
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
             <li>Hello, {user.firstName}</li>
             {/* <li>{user.username}</li> */}
             <li>{user.email}</li>
-            <div style={{ borderTop: "2px solid #000000", marginTop: 10,marginBottom: 3, marginLeft: 6, marginRight: 6 }}></div>
+            <div style={{ borderTop: "2px solid #000000", marginTop: 10, marginBottom: 3, marginLeft: 6, marginRight: 6 }}></div>
 
             <li>
               <NavLink exact to="/spots/current">
@@ -62,7 +67,7 @@ function ProfileButton({ user }) {
 
               </NavLink>
             </li>
-              <div style={{ borderTop: "2px solid #000000", marginTop: 10,marginBottom: 3, marginLeft: 6, marginRight: 6 }}></div>
+            <div style={{ borderTop: "2px solid #000000", marginTop: 10, marginBottom: 3, marginLeft: 6, marginRight: 6 }}></div>
             <li>
               <NavLink exact to="/reviews/current">
                 Manage Reviews
@@ -70,14 +75,14 @@ function ProfileButton({ user }) {
             </li>
 
 
-            <div style={{ borderTop: "2px solid #000000", marginTop: 10,marginBottom: 3, marginLeft: 6, marginRight: 6 }}></div>
+            <div style={{ borderTop: "2px solid #000000", marginTop: 10, marginBottom: 3, marginLeft: 6, marginRight: 6 }}></div>
 
             <li>
               <NavLink exact to="/bookings/current">
                 Manage Bookings
               </NavLink>
             </li>
-            <div style={{ borderTop: "2px solid #000000", marginTop: 10,marginBottom: 3, marginLeft: 6, marginRight: 6 }}></div>
+            <div style={{ borderTop: "2px solid #000000", marginTop: 10, marginBottom: 3, marginLeft: 6, marginRight: 6 }}></div>
 
 
             <li>
