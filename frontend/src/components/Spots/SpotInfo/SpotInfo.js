@@ -8,7 +8,7 @@ import SpotImage from "./ImagesSpot/SpotImages";
 import SpotReview from "./SpotReviews/SpotReviews";
 import CreateReview from "../../Reviews/CreateReview/CreateReview";
 import OpenModalMenuItem from "../../Navigation/OpenModalMenuItem";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+// import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import PlaceOffers from "../SpotInfo/PlaceOffers/PlaceOffers";
 import CreateBooking from "../../Bookings/Manager/Create/CreateBooking";
 import ThingsToKnow from "./ThingsToKnow/ThingsToKnow";
@@ -17,7 +17,7 @@ import SpotInfoFooter from "./Footer/SpotInfoFooter";
 
 const SpotInfo = () => {
     const dispatch = useDispatch();
-    const history = useHistory();
+    // const history = useHistory();
     let { spotId } = useParams();
     spotId = Number(spotId)
 
@@ -52,13 +52,13 @@ const SpotInfo = () => {
 
     const closeMenu = () => setShowMenu(false);
 
-    const reserve = () => {
-        if (userId !== spot.ownerId) {
-            history.push(`bookings/${spotId}`);
-        } else {
-            window.alert('You own this location');
-        }
-    }
+    // const reserve = () => {
+    //     if (userId !== spot.ownerId) {
+    //         history.push(`bookings/${spotId}`);
+    //     } else {
+    //         window.alert('You own this location');
+    //     }
+    // }
 
     if (!spot) {
         return null
@@ -104,7 +104,10 @@ const SpotInfo = () => {
                                         <h3 style={{ fontWeight: 'bold' }}><i class="fa-solid fa-calendar"></i> Free Cancellation</h3>
 
 
-                                        <div>{spot.description}</div>
+                                        <div className='description'>
+                                            <h2>About this spot</h2>
+                                            <p>{spot.description}</p>
+                                        </div>
                                         <PlaceOffers />
 
                                     </div>
@@ -124,7 +127,7 @@ const SpotInfo = () => {
                         </div>
                         <HostedBy spot={spot} userId={userId} />
                         <ThingsToKnow />
-<SpotInfoFooter />
+                        <SpotInfoFooter />
                     </div>
 
                 </section>
@@ -151,7 +154,12 @@ const SpotInfo = () => {
                                         <p>Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests.</p>
                                         <h3 style={{ fontWeight: 'bold' }}><i class="fa-solid fa-calendar"></i> Free Cancellation</h3>
 
-                                        <div>{spot.description}</div>
+                                        <div className='description'>
+                                            <h2>About this spot</h2>
+                                            <p>{spot.description}</p>
+                                        </div>
+
+
                                         <PlaceOffers />
 
                                     </div>
@@ -219,7 +227,10 @@ const SpotInfo = () => {
                                         <p>Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests.</p>
                                         <h3 style={{ fontWeight: 'bold' }}><i class="fa-solid fa-calendar"></i> Free Cancellation</h3>
 
-                                        <div>{spot.description}</div>
+                                        <div className='description'>
+                                            <h2>About this spot</h2>
+                                            <p>{spot.description}</p>
+                                        </div>
                                         <PlaceOffers />
 
                                     </div>
@@ -239,7 +250,7 @@ const SpotInfo = () => {
                         </div>
                         <div className='new-post'>
                             <h1>★ New</h1>
-                            <div className='modal'>
+                            <div className='modal-review'>
                                 <OpenModalMenuItem
                                     buttonText="Post Your Review"
                                     onItemClick={closeMenu}
@@ -281,7 +292,10 @@ const SpotInfo = () => {
                                         <p>Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests.</p>
                                         <h3 style={{ fontWeight: 'bold' }}><i class="fa-solid fa-calendar"></i> Free Cancellation</h3>
 
-                                        <div>{spot.description}</div>
+                                        <div className='description'>
+                                            <h2>About this spot</h2>
+                                            <p>{spot.description}</p>
+                                        </div>
                                         <PlaceOffers />
 
                                     </div>
@@ -309,7 +323,7 @@ const SpotInfo = () => {
                                 <h1>★ {spot.avgStarRating.toFixed(1)} · {newReviewList.length} reviews</h1>
                             }
                             <div className='new-post'>
-                                <div className='modal'>
+                                <div className='modal-review'>
                                     <OpenModalMenuItem
                                         buttonText="Post Your Review"
                                         onItemClick={closeMenu}
@@ -325,7 +339,7 @@ const SpotInfo = () => {
                             newReviewList={newReviewList}
                             userReview={userReview}
                         />
-          <HostedBy spot={spot} userId={userId} />
+                        <HostedBy spot={spot} userId={userId} />
 
                         <ThingsToKnow />
 
@@ -356,7 +370,11 @@ const SpotInfo = () => {
                                         <p>Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests.</p>
                                         <h3 style={{ fontWeight: 'bold' }}><i class="fa-solid fa-calendar"></i> Free Cancellation</h3>
 
-                                        <div>{spot.description}</div>
+
+                                        <div className='description'>
+                                            <h2>About this spot</h2>
+                                            <p>{spot.description}</p>
+                                        </div>
                                         <PlaceOffers />
 
                                     </div>
@@ -386,7 +404,7 @@ const SpotInfo = () => {
 
                             </div>
                             <div className='new-post'>
-                                <div className='modal'>
+                                <div className='modal-review'>
                                     <OpenModalMenuItem
                                         buttonText="Post Your Review"
                                         onItemClick={closeMenu}
@@ -402,7 +420,7 @@ const SpotInfo = () => {
                             newReviewList={newReviewList}
                             userReview={userReview}
                         />
-          <HostedBy spot={spot} userId={userId} />
+                        <HostedBy spot={spot} userId={userId} />
 
                         <ThingsToKnow />
 
@@ -434,7 +452,12 @@ const SpotInfo = () => {
                                         <p>Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests.</p>
                                         <h3 style={{ fontWeight: 'bold' }}><i class="fa-solid fa-calendar"></i> Free Cancellation</h3>
 
-                                        <div>{spot.description}</div>
+
+                                        <div className='description'>
+                                            <h2>About this spot</h2>
+                                            <p>{spot.description}</p>
+                                        </div>
+
                                         <PlaceOffers />
 
                                     </div>
@@ -504,7 +527,12 @@ const SpotInfo = () => {
                                     <p>Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests.</p>
                                     <h3 style={{ fontWeight: 'bold' }}>Free Cancellation</h3>
 
-                                    <div>{spot.description}</div>
+                                    <div className='description'>
+                                        <h2>About this spot</h2>
+                                        <p>{spot.description}</p>
+                                    </div>
+
+
                                     <PlaceOffers />
 
                                 </div>

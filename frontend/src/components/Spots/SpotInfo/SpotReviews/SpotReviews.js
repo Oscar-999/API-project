@@ -39,15 +39,17 @@ const SpotReview = ({ spot, newReviewList, userReview, userId }) => {
 
   return (
     <>
-      <ul>
+      <ul className="spot-review-list">
         {sortedReviews.map((review) => (
-          <li key={review.id}>
-            <div className="name-section">{review.User?.firstName}</div>
-            <div className="date">{getFormattedDate(review.createdAt)}</div>
-            <div className="review-description">{review.review}</div>
+          <li key={review.id} className="spot-review-item">
+            <div className="spot-review-name">{review.User?.firstName}</div>
+            <div className="spot-review-date">
+              {getFormattedDate(review.createdAt)}
+            </div>
+            <div className="spot-review-description">{review.review}</div>
 
             {userReview && userId && review.userId === userId && (
-              <div className="modal">
+              <div className="spot-review-modal">
                 <OpenModalMenuItem
                   buttonText="Delete"
                   onItemClick={closeMenu}

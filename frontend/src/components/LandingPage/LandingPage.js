@@ -1,5 +1,4 @@
-import React from "react";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkAllSpots } from "../../store/spots";
 import { Link } from "react-router-dom";
@@ -10,6 +9,7 @@ const LandingPage = () => {
   const dispatch = useDispatch();
   const spotObj = useSelector((state) => state.spots.allSpots);
   const spotList = Object.values(spotObj);
+
   useEffect(() => {
     dispatch(thunkAllSpots());
   }, [dispatch]);
@@ -19,7 +19,8 @@ const LandingPage = () => {
   }
 
   return (
-    <main>
+    <>
+    <main className="main landing-page">
       <ul>
         {spotList.length > 0 &&
           spotList.map((spot) => (
@@ -47,8 +48,11 @@ const LandingPage = () => {
             </div>
           ))}
       </ul>
-      <Footer />
     </main>
+      <Footer />
+      </>
+
   );
 };
+
 export default LandingPage;

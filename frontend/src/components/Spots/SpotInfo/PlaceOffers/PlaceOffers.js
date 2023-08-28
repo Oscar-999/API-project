@@ -28,6 +28,4 @@ const PlaceOffers = () => {
         </>
     )
 }
-
 export default PlaceOffers;
-

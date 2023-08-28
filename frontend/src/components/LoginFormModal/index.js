@@ -42,6 +42,7 @@ function LoginFormModal() {
     <div className="loging-wrapper">
       <form onSubmit={submitHandler}>
         <h1>Log In</h1>
+        <h2>Welcome to Airbnb</h2>
         <label>
           Username or email
           <input
@@ -67,7 +68,11 @@ function LoginFormModal() {
           </button>
         </div>
       </form>
-      <div className="demo-user">
+      <div id="or">
+        <div className="dividers" />
+        <p>or</p>
+        <div className="dividers" />
+      </div>      <div className="demo-user">
         <button type="submit" onClick={demoUser}>
           Demo User
         </button>

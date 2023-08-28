@@ -49,7 +49,7 @@ const CreateReview = ({ spot }) => {
   };
 
   let isDisabled = true;
-  if (text.length >= 10 && Object.values(errors).length === 0) {
+  if (text.length >= 10 && stars && Object.values(errors).length === 0) {
     isDisabled = false;
   }
 
