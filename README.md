@@ -70,5 +70,5 @@ Logged-in Users can
 * Delete/Cancel their booking
 
 
-#Contanct
+## Contanct
 Conctact Me[LinkedIn](https://www.linkedin.com/in/oscaralcantar/)
