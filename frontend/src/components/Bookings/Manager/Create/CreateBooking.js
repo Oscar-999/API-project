@@ -6,6 +6,8 @@ import { createBookingThunk, getAllUsersBookingsThunk } from "../../../../store/
 import { useHistory } from "react-router-dom";
 import "./CreateBooking.css";
 
+import ReservationPopUP from "../ReservationPopUP.";
+
 export default function CreateBooking() {
     const { spotId } = useParams();
     const history = useHistory();
@@ -15,6 +17,7 @@ export default function CreateBooking() {
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
     const [errors, setErrors] = useState({});
+    const [showPopUp, setShowPopUp] = useState(false);
 
     useEffect(() => {
         dispatch(thunkOneSpot(spotId));
@@ -23,7 +26,6 @@ export default function CreateBooking() {
     const handleSubmit = async event => {
         event.preventDefault();
         setErrors({});
-
         const currentDate = new Date().toJSON().slice(0, 10);
 
         if (startDate < currentDate) {
@@ -85,7 +87,20 @@ export default function CreateBooking() {
                         {errors.endDate && <div className="error-message">{errors.endDate}</div>}
                     </div>
 
-                    {!isUserOwner ? (
+                    {!userId ? (
+                        <>
+                            <button
+                                type="button"
+                                className="reserve-button"
+                                onClick={() => setShowPopUp(true)}
+                            >
+                                Reserve
+                            </button>
+                            {showPopUp && (
+                                <ReservationPopUP onClose={() => setShowPopUp(false)} />
+                            )}
+                        </>
+                    ) : !isUserOwner ? (
                         <button
                             type="submit"
                             className="reserve-button"
@@ -96,7 +111,6 @@ export default function CreateBooking() {
                     ) : (
                         <p className="cant-reserve-message">Can't reserve your own spot</p>
                     )}
-
 
                     <p id="no-charge">You won't be charged yet</p>
                 </form>
