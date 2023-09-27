@@ -22,8 +22,88 @@ Live Site [MultiverseBnb](https://air-bnb-mr42.onrender.com/)
 ## One Spot Page and Reviews
 ![spot-page-gif](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzRzdWd1cnF4M2ZoN252ZmgwamJqM3pkaDFvOXpuMTcyODBja2xlNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/r6BiWMN3L8hLPns9N5/giphy.gif)
 
+## Code I'm Proud Of
 
-## Getting started
+```javascript
+// Get all spots owned by the current user
+router.get("/current", requireAuth, async (req, res) => {
+  const userId = req.user.id;
+
+  const spots = await Spot.findAll({
+    where: {
+      ownerId: userId,
+    },
+    include: [
+      {
+        model: SpotImage,
+        as: "SpotImages",
+        where: { preview: true },
+        required: false,
+      },
+      {
+        model: Review,
+        as: "Reviews",
+        attributes: [
+          [sequelize.fn("AVG", sequelize.col("Reviews.stars")), "avgRating"],
+        ],
+        required: false,
+      },
+    ],
+    group: ["Spot.id", "SpotImages.id", "Reviews.id"],
+  });
+
+  const formattedSpots = spots.map((spot) => {
+    let avgRating = 0;
+
+    if (spot.Reviews && spot.Reviews.length > 0) {
+      avgRating = parseFloat(
+        spot.Reviews[0].getDataValue("avgRating")
+      ).toFixed(1);
+    }
+
+    const previewImage =
+      spot.SpotImages && spot.SpotImages.length > 0
+        ? spot.SpotImages[0].url
+        : null;
+
+    return {
+      id: spot.id,
+      ownerId: spot.ownerId,
+      address: spot.address,
+      city: spot.city,
+      state: spot.state,
+      country: spot.country,
+      lat: spot.lat,
+      lng: spot.lng,
+      name: spot.name,
+      description: spot.description,
+      price: spot.price,
+      createdAt: spot.createdAt,
+      updatedAt: spot.updatedAt,
+      avgRating: avgRating,
+      previewImage: previewImage,
+    };
+  });
+
+  res.status(200).json({ Spots: formattedSpots });
+});
+```
+Explanation :
+Route Setup: The code sets up an Express.js route at "/current" for handling GET requests.
+
+User Authentication: It checks if the user is authenticated (logged in) using the requireAuth middleware.
+
+Database Query: It queries a database table called "Spot" to find spots owned by the current user based on their ID.
+
+Data Retrieval: The code also fetches associated data like spot images and reviews while ensuring that only preview images are included.
+
+Data Formatting: It calculates the average rating of reviews for each spot and formats the data into a more user-friendly structure.
+
+JSON Response: Finally, it sends a JSON response containing the formatted spot data back to the client.
+
+In short, this code handles authenticated requests to retrieve and format spot-related data from a database, making it ready for a response in a well-structured JSON format.
+
+## Getting Started
 1. Clone this repository:
 
    `
