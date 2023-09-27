@@ -151,5 +151,5 @@ Logged-in Users can
 * Delete/Cancel their booking
 
 
-## Contanct
-Conctact Me[LinkedIn](https://www.linkedin.com/in/oscaralcantar/)
+## Contact
+Contact Me[LinkedIn](https://www.linkedin.com/in/oscaralcantar/)
