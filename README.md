@@ -4,7 +4,7 @@ MultiverseBnb is a fullstack web application. It is a clone/parody of the websit
 
 Live Site [MultiverseBnb](https://air-bnb-mr42.onrender.com/)
 
-## Inde
+## Index
 
 [MVP Feature List](https://github.com/Oscar-999/AirBnB/wiki/Features-List) |
 [Database Scheme](https://github.com/Oscar-999/AirBnB/wiki/Db-Diagram) |
