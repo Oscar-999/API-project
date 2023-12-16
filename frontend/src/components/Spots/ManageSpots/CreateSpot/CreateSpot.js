@@ -238,7 +238,7 @@ const CreateSpot = () => {
                     placeholder="latitude"
                     min="-90"
                     max="90"
-                    step="any"
+                    // step="any"
                     value={latitude}
                     onChange={(e) => setLatitude(e.target.value)}
                   />{" "}
@@ -257,7 +257,7 @@ const CreateSpot = () => {
                   placeholder="longitude"
                   min="-180"
                   max="180"
-                  step="any"
+                  // step="any"
                   value={longitude}
                   onChange={(e) => setLongitude(e.target.value)}
                 />
