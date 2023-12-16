@@ -50,6 +50,9 @@ const CreateSpot = () => {
     }
   });
 
+  const parsedLatitude = parseFloat(latitude);
+  const parsedLongitude = parseFloat(longitude);
+
   const submitHandler = async (e) => {
     e.preventDefault();
     const spotObj = {
@@ -58,8 +61,8 @@ const CreateSpot = () => {
       address: street,
       city,
       state,
-      lat: latitude,
-      lng: longitude,
+      lat: parsedLatitude,
+      lng: parsedLongitude,
       description,
       name,
       price,
@@ -355,7 +358,9 @@ const CreateSpot = () => {
             <div className="errors">{errors.img4}</div>
           </div>
         </div>
-        <button className="Creates-spot" type="submit">Create Spot</button>
+        <button className="Creates-spot" type="submit">
+          Create Spot
+        </button>
       </form>
     </div>
   );
