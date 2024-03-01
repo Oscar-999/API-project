@@ -157,119 +157,119 @@ module.exports = {
       },
       {
         spotId: 7,
-        url: "https://media.discordapp.net/attachments/1101728106638741525/1144772846627864707/Screenshot_2023-08-25_181804.png",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/sbp1.png",
         preview: true
       },
       {
         spotId: 7,
-        url: "https://media.discordapp.net/attachments/1101728106638741525/1144772239200362496/b7a3e518ec2ea5993798fdcf57601d95fb9df813v2_hq.png",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/sbp2.png",
         preview: false
       }, {
         spotId: 7,
-        url: "https://images-ext-1.discordapp.net/external/t8QNlaAwtQnwG6tZZ3RHmg5Lw_5i9ofKXPa0IP8bxpc/https/oyster.ignimgs.com/mediawiki/apis.ign.com/spongebob-squarepants-battle-for-bikini-bottom-rehydrated/0/05/SpongeBob_SquarePants_Battle_For_Bikini_Bottom_-_Rehydrated_20200613133414.png",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/sbp3.png",
         preview: false
       },{
         spotId: 7,
-        url: "https://images-ext-1.discordapp.net/external/eYUtAlVO_P0byR6JvAax0k1WA431XTYKGiM4wgQXdHQ/https/i.pinimg.com/1200x/7b/a9/bb/7ba9bb34424092cad9159040625c3e26.jpg",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/sbp4.png",
         preview: false
       },{
         spotId: 7,
-        url: "https://media.discordapp.net/attachments/1101728106638741525/1144772412886491257/spongebob27s-big-red-chair-in-house.png",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/sbp5.jpg",
         preview: false
       },
       //Spot 8
       {
         spotId: 8,
-        url: "https://media.discordapp.net/attachments/1101728106638741525/1145117207777509506/simpsonsfamilyhouse-56a009fa3df78cafda9fbc8b.png",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/s1.png",
         preview: true
       },
       {
         spotId: 8,
-        url: "https://media.discordapp.net/attachments/1101728106638741525/1145116577725956166/742_Evergreen_Terrace.png",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/s2.png",
         preview: false
       }, {
         spotId: 8,
-        url: "https://media.discordapp.net/attachments/1101728106638741525/1145117432470589600/Screenshot_2023-08-26_170635.png",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/s3.png",
         preview: false
       },{
         spotId: 8,
-        url: "https://images-ext-2.discordapp.net/external/Z7wO5IZWdogKwHoSLSrV8sOYWTj3AoeM1wugWGkcmzo/https/www.collater.al/wp-content/uploads/2019/07/i-Simpson-The-Simpsons-Collater.al-9f-1024x707.jpg",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/s4.jpg",
         preview: false
       },{
         spotId: 8,
-        url: "https://images-ext-2.discordapp.net/external/KulzdH0RKbM0CmcheNp6NUqIW7YYgslx0IwuqJNbNmg/https/cdn.mos.cms.futurecdn.net/CFubit7V5muExqJPkbjRwg.jpg",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/s5.jpg",
         preview: false
       },
 
       //Spot 9
       {
         spotId: 9,
-        url: "https://media.discordapp.net/attachments/1101728106638741525/1145138129653739611/Screenshot_2023-08-26_182833.png",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/gf1.png",
         preview: true
       },
       {
         spotId: 9,
-        url: "https://media.discordapp.net/attachments/1101728106638741525/1145138130073178233/Screenshot_2023-08-26_182849.png",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/gf2.png",
         preview: false
       }, {
         spotId: 9,
-        url: "https://media.discordapp.net/attachments/1101728106638741525/1145138130425495632/Screenshot_2023-08-26_182914.png",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/gf3.png",
         preview: false
       },{
         spotId: 9,
-        url: "https://media.discordapp.net/attachments/1101728106638741525/1145138130962370581/Screenshot_2023-08-26_182927.png",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/gf4.png",
         preview: false
       },{
         spotId: 9,
-        url: "https://media.discordapp.net/attachments/1101728106638741525/1145138131738312746/Screenshot_2023-08-26_182954.png",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/gf5.png",
         preview: false
       },
 
       //Spot 10
       {
         spotId: 10,
-        url: "https://media.discordapp.net/attachments/1101728106638741525/1145137032939704340/Screenshot_2023-08-26_182401.png",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/ps1.png",
         preview: true
       },
       {
         spotId: 10,
-        url: "https://media.discordapp.net/attachments/1101728106638741525/1145137034030223400/Screenshot_2023-08-26_182457.png",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/ps2.png",
         preview: false
       }, {
         spotId: 10,
-        url: "https://media.discordapp.net/attachments/1101728106638741525/1145137033484972062/Screenshot_2023-08-26_182421.png",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/ps3.png",
         preview: false
       },{
         spotId: 10,
-        url: "https://images-ext-1.discordapp.net/external/v2rT2cUc59HrTyT5agFqf7gpe9hz6O4sGu6qfFw-3Po/https/mir-s3-cdn-cf.behance.net/project_modules/max_1200/cc117d107478815.5fa84771528fe.jpg",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/ps4.jpg",
         preview: false
       },{
         spotId: 10,
-        url: "https://media.discordapp.net/attachments/1101728106638741525/1145137195108282478/Screenshot_2023-08-26_182615.png",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/ps5.png",
         preview: false
       },
 
       //Spot 11
       {
         spotId: 11,
-        url: "https://media.discordapp.net/attachments/1101728106638741525/1145136427542269962/Screenshot_2023-08-26_182142.png",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/iz1.png",
         preview: true
       },
       {
         spotId: 11,
-        url: "https://media.discordapp.net/attachments/1101728106638741525/1145136427886198936/Screenshot_2023-08-26_182209.png",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/iz2.png",
         preview: false
       }, {
         spotId: 11,
-        url: "https://media.discordapp.net/attachments/1101728106638741525/1145136428746022922/Screenshot_2023-08-26_182245.png",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/iz3.png",
         preview: false
       },{
         spotId: 11,
-        url: "https://media.discordapp.net/attachments/1101728106638741525/1145136428192387182/Screenshot_2023-08-26_182218.png",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/iz4.png",
         preview: false
       },{
         spotId: 11,
-        url: "https://media.discordapp.net/attachments/1101728106638741525/1145136428465012836/Screenshot_2023-08-26_182231.png",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/iz5.png",
         preview: false
       },
 
@@ -277,99 +277,99 @@ module.exports = {
       //Spot 12
       {
         spotId: 12,
-        url: "https://media.discordapp.net/attachments/1101728106638741525/1145129222432620575/Screenshot_2023-08-26_175431.png",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/su1.png",
         preview: true
       },
       {
         spotId: 12,
-        url: "https://media.discordapp.net/attachments/1101728106638741525/1145129060738015363/Screenshot_2023-08-26_175353.png",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/su2.png",
         preview: false
       }, {
         spotId: 12,
-        url: "https://media.discordapp.net/attachments/1101728106638741525/1145128729861959720/Screenshot_2023-08-26_175225.png",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/su3.png",
         preview: false
       },{
         spotId: 12,
-        url: "https://media.discordapp.net/attachments/1101728106638741525/1145129406742929489/Screenshot_2023-08-26_175516.png",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/su4.png",
         preview: false
       },{
         spotId: 12,
-        url: "https://media.discordapp.net/attachments/1101728106638741525/1145129536875413514/Screenshot_2023-08-26_175549.png",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/su5.png",
         preview: false
       },
 
 
       {
         spotId: 13,
-        url: "https://media.discordapp.net/attachments/1101728106638741525/1145132222710558760/Screenshot_2023-08-26_180542.png",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/ha1.jpg",
         preview: true
       },
       {
         spotId: 13,
-        url: "https://media.discordapp.net/attachments/1101728106638741525/1145132223054487675/Screenshot_2023-08-26_180555.png",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/ha2.png",
         preview: false
       }, {
         spotId: 13,
-        url: "https://media.discordapp.net/attachments/1101728106638741525/1145132223356473446/Screenshot_2023-08-26_180612.png",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/ha3.png",
         preview: false
       },{
         spotId: 13,
-        url: "https://images-ext-2.discordapp.net/external/ylbsX3ZVrkSVyOAsDXQ3DFDfKUfsxGnmPTx2rbP5QAY/https/www.theadvertiser.com/gcdn/-mm-/6d46f0a03148c87ce3989a311abc6d55d0153ee9/c%3D0-302-3264-2146/local/-/media/2015/11/17/LAGroup/LafayetteLA/635833823197834471-home1.jpg",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/ha4.png",
         preview: false
       },{
         spotId: 13,
-        url: "https://media.discordapp.net/attachments/1101728106638741525/1145131892396531782/Screenshot_2023-08-26_180510.png",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/ha5.png",
         preview: false
       },
 
 
       {
         spotId: 14,
-        url: "https://media.discordapp.net/attachments/1101728106638741525/1145130667567497226/Screenshot_2023-08-26_175958.png",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/tt1.png",
         preview: true
       },
       {
         spotId: 14,
-        url: "https://media.discordapp.net/attachments/1101728106638741525/1145130668205015110/Screenshot_2023-08-26_175852.png",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/tt2.png",
         preview: false
       }, {
         spotId: 14,
-        url: "https://media.discordapp.net/attachments/1101728106638741525/1145130667907240016/Screenshot_2023-08-26_175910.png",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/tt3.png",
         preview: false
       },{
         spotId: 14,
-        url: "https://media.discordapp.net/attachments/1101728106638741525/1145130747250868305/Screenshot_2023-08-26_175810.png",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/tt4.png",
         preview: false
       },{
         spotId: 14,
-        url: "https://media.discordapp.net/attachments/1101728106638741525/1145130747561254912/Screenshot_2023-08-26_175739.png",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/tt5.png",
         preview: false
       },
 
 
       {
         spotId: 15,
-        url: "https://media.discordapp.net/attachments/1101728106638741525/1145123519374573680/Screenshot_2023-08-26_173151.png",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/Southpark1.png",
         preview: true
       },
       {
         spotId: 15,
-        url: "https://media.discordapp.net/attachments/1101728106638741525/1145124350018736198/Screenshot_2023-08-26_173512.png",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/sp5.png",
         preview: false
       }, {
         spotId: 15,
-        url: "https://media.discordapp.net/attachments/1101728106638741525/1145124171706273913/Screenshot_2023-08-26_173428.png",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/sp4.png",
         preview: false
       },{
         spotId: 15,
-        url: "https://media.discordapp.net/attachments/1101728106638741525/1145123941740978288/image.png",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/sp3.png",
         preview: false
       },{
         spotId: 15,
-        url: "https://media.discordapp.net/attachments/1101728106638741525/1145123803014385714/Screenshot_2023-08-26_173256.png",
+        url: "https://skills-swap.s3.us-east-2.amazonaws.com/Sp2.png",
         preview: false
       },
-
+// test
       {
         spotId: 16,
         url: "https://images-ext-2.discordapp.net/external/GGW0x7hJzXUxvXdVdFb9MPnflIuTnIdEJtRa8cdOjy0/https/c4.wallpaperflare.com/wallpaper/308/366/395/adventure-time-hd-adventure-time-finn-s-house-wallpaper-preview.jpg",
